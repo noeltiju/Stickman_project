@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="875.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stickman_project.EndingController">
+   <children>
+      <ImageView fitHeight="875.0" fitWidth="1467.0" layoutY="-1.0" opacity="0.71" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../bg.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="623.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GAME OVER!" wrappingWidth="213.21630859375">
+         <font>
+            <Font name="Bodoni 72 Oldstyle Bold" size="36.0" />
+         </font>
+      </Text>
+      <Pane layoutX="639.0" layoutY="225.0" prefHeight="123.0" prefWidth="175.0" style="-fx-background-radius: 20; -fx-background-color: white;">
+         <children>
+            <Text layoutX="55.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SCORE">
+               <font>
+                  <Font name="Bodoni 72 Smallcaps Book" size="19.0" />
+               </font>
+            </Text>
+            <Text layoutX="76.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+            </Text>
+            <Text layoutX="64.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BEST">
+               <font>
+                  <Font name="Bodoni 72 Smallcaps Book" size="19.0" />
+               </font>
+            </Text>
+            <Text layoutX="70.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Button layoutX="597.0" layoutY="583.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="55.0" style="-fx-background-radius: 10;" />
+      <Button layoutX="670.0" layoutY="583.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="55.0" style="-fx-background-radius: 10;" />
+      <Button layoutX="816.0" layoutY="583.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="55.0" style="-fx-background-radius: 10;" />
+      <Button layoutX="743.0" layoutY="583.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="55.0" style="-fx-background-radius: 10;" />
+      <Button layoutX="644.0" layoutY="423.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="159.0" style="-fx-background-radius: 10; -fx-background-color: #f13e5e;" text="SHARE" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="603.0" layoutY="587.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Home_Icon-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="676.0" layoutY="587.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Leaderboard%20Icon%20(1)..png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="749.0" layoutY="587.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Star%20Icon%20(1)..png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="822.0" layoutY="587.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Retry%20500%20removebg%20preview.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
