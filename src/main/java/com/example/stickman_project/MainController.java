@@ -25,7 +25,7 @@ public class MainController {
     private Rectangle secondary_block;
     @FXML
     public ImageView character;
-    Image standing = new Image("standing.png");
+    Image standing = new Image("donkey_kong.png");
     Image running = new Image("running.png");
     BackgroundImage bg = new BackgroundImage(
             (new Image("bg.png")),
