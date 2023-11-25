@@ -23,6 +23,8 @@ public class NINJA {
     private Image kicking1 = new Image("donkeykong_kicking1.png");
     private Image kicking2 = new Image("donkeykong_kicking2.png");
     private Image kicking3 = new Image("donkeykong_kicking3.png");
+    private Image kicking4 = new Image("donkeykong_kicking4.png");
+    private Image kicking5 = new Image("donkeykong_kicking5.png");
 
 
     int running_number = 1;
@@ -66,11 +68,20 @@ public class NINJA {
                 break;
             case 3:
                 this.character.setImage(this.kicking3);
+                running_number = 4;
+                break;
+            case 4:
+                this.character.setImage(this.kicking4);
+                running_number = 5;
+                break;
+            case 5:
+                this.character.setImage(this.kicking5);
                 running_number = 1;
                 break;
         }
 
     }));
+
     public NINJA(ImageView character) {
         this.character = character;
         this.character.setImage(running1);
