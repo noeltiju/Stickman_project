@@ -33,12 +33,15 @@ public class MainController {
             BackgroundRepeat.NO_REPEAT,
             BackgroundPosition.DEFAULT,
             BackgroundSize.DEFAULT);
+
+    private NINJA ninja;
     public void initialize() throws InterruptedException {
 
         main_screen.setBackground(new Background(bg));
-        character.setImage(standing);
-        this.secondary_block.setVisible(false);
+        ninja = new NINJA(character);
+        ninja.running_animation();
 
+        this.secondary_block.setVisible(false);
         Random rand = new Random();
         int x = 380 + rand.nextInt(500);
         this.secondary_block.setLayoutX(x);
@@ -48,6 +51,7 @@ public class MainController {
     }
 
     public void exit(ActionEvent event) throws IOException {
+        ninja.running_animation_stopper();
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ending-view.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);

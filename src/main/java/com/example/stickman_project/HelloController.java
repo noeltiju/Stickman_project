@@ -33,7 +33,6 @@ public class HelloController {
     private Rectangle starting_block;
     @FXML
     private Rectangle secondary_block;
-    private NINJA ninja = new NINJA(false);
     Blocks blocks_generator = new Blocks();
     Image standing = new Image("standing.png");
     Image running = new Image("running.png");

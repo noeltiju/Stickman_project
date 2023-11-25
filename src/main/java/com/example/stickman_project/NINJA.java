@@ -1,37 +1,71 @@
 package com.example.stickman_project;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.fxml.FXML;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.util.Duration;
+
 public class NINJA {
-    private boolean upsidedown;int cherry_counter = 0;int score = 0;
+    private boolean upsidedown = false;
+    int cherry_counter = 0;
+    int score = 0;
+    @FXML
+    ImageView character;
+    private Image running1 = new Image("donkeykong_running1.png");
+    private Image running2 = new Image("donkeykong_running2.png");
+    private Image running3 = new Image("donkeykong_running3.png");
+    private Image running4 = new Image("donkeykong_running4.png");
+    private Image running5 = new Image("donkeykong_running5.png");
 
-    public NINJA(boolean upsidedown) {
-        this.upsidedown = upsidedown;
+    int running_number = 1;
+    private Timeline running_timeline = new Timeline(new KeyFrame(Duration.seconds(0.05), event ->{
+        System.out.println(1);
+        switch (running_number) {
+            case 1:
+                this.character.setImage(this.running1);
+                running_number = 2;
+                break;
+            case 2:
+                this.character.setImage(this.running2);
+                running_number = 3;
+                break;
+            case 3:
+                this.character.setImage(this.running3);
+                running_number = 4;
+                break;
+            case 4:
+                this.character.setImage(this.running4);
+                running_number = 5;
+                break;
+            case 5:
+                this.character.setImage(this.running5);
+                running_number = 1;
+                break;
+        }
+
+    }));
+
+    public NINJA(ImageView character) {
+        this.character = character;
+        this.character.setImage(running1);
     }
 
-    public boolean isUpsidedown() {
-        return upsidedown;
-    }
-
-    public void setUpsidedown(boolean upsidedown) {
-        this.upsidedown = upsidedown;
-    }
 
     public void running_animation(){
-
+        System.out.println("RUNNING");
+        this.running_timeline.setCycleCount(Animation.INDEFINITE);
+        this.running_timeline.play();
+    }
+    public void running_animation_stopper(){
+        this.running_timeline.stop();
     }
 
     public void kicking_animation(){
 
     }
 
-    public void upside_animation(){
 
-    }
-
-    public void setCherry_counter(int cherry_counter) {
-        this.cherry_counter = cherry_counter;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
 }
