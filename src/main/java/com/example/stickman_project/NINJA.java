@@ -52,7 +52,6 @@ public class NINJA {
         }
 
     }));
-
     int kicking_number = 1;
     private Timeline kicking_timeline = new Timeline(new KeyFrame(Duration.seconds(0.05), event ->{
         System.out.println(1);
@@ -85,13 +84,11 @@ public class NINJA {
     public void running_animation_stopper(){
         this.running_timeline.stop();
     }
-
     public void kicking_animation(){
         this.kicking_timeline.setCycleCount(Animation.INDEFINITE);
         this.kicking_timeline.play();
 
     }
-
     public void kicking_animation_stopper(){
         this.kicking_timeline.stop();
     }
