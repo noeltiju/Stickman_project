@@ -33,7 +33,6 @@ public class HelloController {
     private Rectangle starting_block;
     @FXML
     private Rectangle secondary_block;
-    Blocks blocks_generator = new Blocks();
     Image standing = new Image("standing.png");
     Image running = new Image("running.png");
 
@@ -64,11 +63,6 @@ public class HelloController {
         stage.setScene(scene);
         stage.show();
 
-//        Random rand = new Random();
-//        int x = 380 + rand.nextInt(700);
-//        secondary_block.setLayoutX(x);secondary_block.setLayoutY(524);
-//        secondary_block.setWidth(rand.nextInt(100,500));
-//        secondary_block.setVisible(true);
 
     }
 

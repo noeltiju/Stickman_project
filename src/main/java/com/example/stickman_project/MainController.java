@@ -34,20 +34,15 @@ public class MainController {
             BackgroundPosition.DEFAULT,
             BackgroundSize.DEFAULT);
 
-    private NINJA ninja;
+    private NINJA ninja; private Blocks blocks;
     public void initialize() throws InterruptedException {
 
         main_screen.setBackground(new Background(bg));
         ninja = new NINJA(character);
-        ninja.running_animation();
-
+        blocks = new Blocks(starting_block,secondary_block,main_screen,ninja);
+        blocks.switch_block_motion();
         this.secondary_block.setVisible(false);
-        Random rand = new Random();
-        int x = 380 + rand.nextInt(500);
-        this.secondary_block.setLayoutX(x);
-        this.secondary_block.setLayoutY(558);
-        this.secondary_block.setWidth(rand.nextInt(100,500));
-        this.secondary_block.setVisible(true);
+        blocks.generate_second_block_initial();
     }
 
     public void exit(ActionEvent event) throws IOException {
