@@ -20,6 +20,11 @@ public class NINJA {
     private Image running4 = new Image("donkeykong_running4.png");
     private Image running5 = new Image("donkeykong_running5.png");
 
+    private Image kicking1 = new Image("donkeykong_kicking1.png");
+    private Image kicking2 = new Image("donkeykong_kicking2.png");
+    private Image kicking3 = new Image("donkeykong_kicking3.png");
+
+
     int running_number = 1;
     private Timeline running_timeline = new Timeline(new KeyFrame(Duration.seconds(0.05), event ->{
         System.out.println(1);
@@ -48,6 +53,25 @@ public class NINJA {
 
     }));
 
+    int kicking_number = 1;
+    private Timeline kicking_timeline = new Timeline(new KeyFrame(Duration.seconds(0.05), event ->{
+        System.out.println(1);
+        switch (kicking_number) {
+            case 1:
+                this.character.setImage(this.kicking1);
+                this.kicking_number = 2;
+                break;
+            case 2:
+                this.character.setImage(this.kicking2);
+                this.kicking_number = 3;
+                break;
+            case 3:
+                this.character.setImage(this.kicking3);
+                running_number = 1;
+                break;
+        }
+
+    }));
     public NINJA(ImageView character) {
         this.character = character;
         this.character.setImage(running1);
@@ -55,7 +79,6 @@ public class NINJA {
 
 
     public void running_animation(){
-        System.out.println("RUNNING");
         this.running_timeline.setCycleCount(Animation.INDEFINITE);
         this.running_timeline.play();
     }
@@ -64,7 +87,13 @@ public class NINJA {
     }
 
     public void kicking_animation(){
+        this.kicking_timeline.setCycleCount(Animation.INDEFINITE);
+        this.kicking_timeline.play();
 
+    }
+
+    public void kicking_animation_stopper(){
+        this.kicking_timeline.stop();
     }
 
 
