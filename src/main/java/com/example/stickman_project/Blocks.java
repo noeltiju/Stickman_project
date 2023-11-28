@@ -21,25 +21,33 @@ public class Blocks {
     private NINJA ninja;
     private Random rand = new Random();
 
-    private Timeline moving_timeline = new Timeline(new KeyFrame(Duration.seconds(0.001), event ->{
-        if (this.secondary_block.getLayoutX() + this.secondary_block.getWidth() >= 275){
+    private Timeline moving_timeline = new Timeline(new KeyFrame(Duration.seconds(0.005), event ->{
+        if (this.ninja.get_position() >= 157){
+            this.stick.setPosition(this.stick.getPosition() - 1);
             this.secondary_block.setLayoutX(this.secondary_block.getLayoutX() - 1);
             this.starting_block.setLayoutX(this.starting_block.getLayoutX() - 1);
-        }else{
+            this.ninja.set_position(this.ninja.get_position() - 1);
+        }
+
+//        else if (this.secondary_block.getLayoutX() + this.secondary_block.getWidth() >= 275){
+//            this.stick.setPosition(this.stick.getPosition() - 2);
+//            this.secondary_block.setLayoutX(this.secondary_block.getLayoutX() - 2);
+//            this.starting_block.setLayoutX(this.starting_block.getLayoutX() - 2);
+        else{
             this.ninja.initial_image();
-            this.ninja.set_position(89);
             this.starting_block.setLayoutX(275 - this.secondary_block.getWidth());
             this.starting_block.setWidth(this.secondary_block.getWidth());
             this.generate_second_block();
             this.moving_timeline.stop();
-
+            this.stick.initial_condition();
         }
 
     }));
-    public Blocks(Rectangle first, Rectangle second, AnchorPane main_pane,NINJA character){
+    private Stick stick;
+
+    public Blocks(Rectangle first, Rectangle second, NINJA character){
         this.starting_block = first;
         this.secondary_block = second;
-        this.main_pane = main_pane;
         this.ninja = character;
     }
     public void generate_second_block_initial(){
@@ -59,5 +67,13 @@ public class Blocks {
 
         this.moving_timeline.setCycleCount(Animation.INDEFINITE);
         this.moving_timeline.play();
+        this.stick.remove_previous_stick();
+    }
+    public void setStick(Stick stick) {
+        this.stick = stick;
+    }
+
+    public Rectangle getSecondary_block() {
+        return secondary_block;
     }
 }

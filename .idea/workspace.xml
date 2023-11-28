@@ -5,11 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6e7f1d4-1245-41b3-b385-b785207879f4" name="Changes" comment="Second Commit">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Blocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Blocks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/EndingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/EndingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/HelloApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/HelloController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/NINJA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/NINJA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Stick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Stick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/stickman_project/main-game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/stickman_project/main-game.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_kicking1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/donkeykong_kicking1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_kicking2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/donkeykong_kicking2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_kicking3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/donkeykong_kicking3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_kicking4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/donkeykong_kicking4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_kicking5.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/donkeykong_kicking5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_running1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/donkeykong_running1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_running2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/donkeykong_running2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_running3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/donkeykong_running3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_running4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/donkeykong_running4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_running5.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/donkeykong_running5.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,6 +119,11 @@
       <workItem from="1700908911782" duration="2163000" />
       <workItem from="1700914779655" duration="2766000" />
       <workItem from="1700940284953" duration="5275000" />
+      <workItem from="1700990723374" duration="61000" />
+      <workItem from="1700991993440" duration="2508000" />
+      <workItem from="1701077048300" duration="254000" />
+      <workItem from="1701115557349" duration="6283000" />
+      <workItem from="1701151354227" duration="4785000" />
     </task>
     <task id="LOCAL-00001" summary="Second Commit">
       <option name="closed" value="true" />

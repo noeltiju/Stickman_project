@@ -18,7 +18,17 @@ import java.util.Random;
 
 
 public class EndingController {
+    private Scene scene;
+    private Stage stage;
     public void initialize(){
 
+    }
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 }

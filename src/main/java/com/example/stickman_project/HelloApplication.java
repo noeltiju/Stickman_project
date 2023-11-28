@@ -21,10 +21,24 @@ import java.util.Objects;
 public class  HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, InterruptedException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("hello-view.fxml")));
+//        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("hello-view.fxml")));
+//        Scene scene = new Scene(root);
+//        stage.setTitle("Stick Hero!");
+//        stage.setScene(scene);
+//        stage.show();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+        Parent root = loader.load();
+        HelloController controller = loader.getController();
+
         Scene scene = new Scene(root);
-        stage.setTitle("Stick Hero!");
+
+        controller.setScene(scene);
+
+        stage = new Stage();
         stage.setScene(scene);
+
+        controller.setStage(stage);
+
         stage.show();
     }
 

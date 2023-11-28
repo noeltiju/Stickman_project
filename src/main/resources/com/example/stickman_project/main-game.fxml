@@ -11,15 +11,16 @@
    <children>
       <Rectangle fx:id="starting_block" arcHeight="5.0" arcWidth="5.0" fill="#430909" height="327.0" layoutX="1.0" layoutY="549.0" stroke="BLACK" strokeType="INSIDE" width="248.0" />
       <Rectangle fx:id="secondary_block" arcHeight="5.0" arcWidth="5.0" fill="#430909" height="327.0" layoutX="337.0" layoutY="550.0" stroke="BLACK" strokeType="INSIDE" width="248.0" />
-      <ImageView fx:id="character" fitHeight="235.0" fitWidth="216.0" layoutX="89.0" layoutY="401.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="character" fitHeight="179.0" fitWidth="123.0" layoutX="147.0" layoutY="456.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../donkey_kong.png" />
          </image>
       </ImageView>
-      <Button layoutX="98.0" layoutY="111.0" mnemonicParsing="false" onAction="#exit" prefHeight="68.0" prefWidth="133.0" style="-fx-background-color: red; -fx-background-radius: 30;" text="QUIT" textFill="WHITE">
+      <Button fx:id="exit_button" layoutX="98.0" layoutY="111.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="133.0" style="-fx-background-color: red; -fx-background-radius: 30;" text="QUIT" textFill="WHITE">
          <font>
             <Font size="32.0" />
          </font>
       </Button>
+      <Rectangle fx:id="stick_rectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" layoutX="239.0" layoutY="550.0" stroke="BLACK" strokeType="INSIDE" width="10.0" />
    </children>
 </AnchorPane>
