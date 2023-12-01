@@ -176,6 +176,9 @@ public class NINJA {
 
     public void initial_image(){
         this.character.setImage(running1);
+        this.scene.addEventFilter(KeyEvent.KEY_PRESSED,this::donkey_no_jump);
+
+
     }
 
     public void set_position(double x){
@@ -264,27 +267,32 @@ public class NINJA {
     }
 
 
+    private boolean isJumping = false;
+
     private void donkey_jump(KeyEvent event) {
-        if (event.getCode() == KeyCode.UP) {
-            this.character_status = "UP";
-            RotateTransition r = new RotateTransition(Duration.seconds(0.6), this.character);
-            r.setFromAngle(0);
-            r.setToAngle(360);
-            ParallelTransition combo = new ParallelTransition(
-                    new TranslateTransition(Duration.seconds(0.6), this.character),r
-            );
-            ((TranslateTransition) combo.getChildren().get(0)).setByY(-100);
+        if (event.getCode() == KeyCode.UP && !isJumping) {
+            isJumping = true;
+            RotateTransition rotateTransition = new RotateTransition(Duration.seconds(0.6), this.character);
+            rotateTransition.setFromAngle(0);
+            rotateTransition.setToAngle(360);
+            TranslateTransition jumpTransition = new TranslateTransition(Duration.seconds(0.6), this.character);
+            jumpTransition.setByY(-100);
+            ParallelTransition combo = new ParallelTransition(rotateTransition, jumpTransition);
             combo.play();
+
         }
     }
 
     private void donkey_no_jump(KeyEvent event) {
         if (event.getCode() == KeyCode.UP) {
-            this.character_status = "MOVE";
 
-            TranslateTransition donkey_no_jump = new TranslateTransition(Duration.seconds(0.6), this.character);
-            donkey_no_jump.setToY(0);
-            donkey_no_jump.play();
+            isJumping = false;
+
+
+            TranslateTransition donkeyNoJump = new TranslateTransition(Duration.seconds(0.6), this.character);
+            donkeyNoJump.setToY(0);
+            donkeyNoJump.play();
+
         }
     }
 

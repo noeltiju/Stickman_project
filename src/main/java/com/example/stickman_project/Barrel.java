@@ -74,6 +74,7 @@ public class Barrel implements Runnable{
     }
 
     public void barrel_roll(){
+        System.out.println("Executing");
         this.barrel_rolling.setCycleCount(Timeline.INDEFINITE);
         this.barrel_rolling.play();
     }
