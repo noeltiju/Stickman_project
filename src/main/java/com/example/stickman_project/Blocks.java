@@ -76,8 +76,6 @@ public class Blocks {
         this.secondary_block.setWidth(rand.nextInt((int) this.ninja.get_character().getFitWidth(),300));
         this.rising_timeline.setCycleCount(Timeline.INDEFINITE);
         this.rising_timeline.play();
-
-
     }
     public void switch_block_motion(){
 
