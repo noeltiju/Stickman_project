@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -52,9 +53,10 @@ public class NINJA {
                 case 1:
                     this.character.setImage(this.running1);
                     running_number = 2;
-
                     this.scene.addEventFilter(KeyEvent.KEY_PRESSED, this::donkey_flip);
                     this.scene.addEventFilter(KeyEvent.KEY_RELEASED,this::donkey_normal);
+                    this.scene.addEventFilter(KeyEvent.KEY_PRESSED, this::donkey_jump);
+                    this.scene.addEventFilter(KeyEvent.KEY_RELEASED,this::donkey_no_jump);
 
                     break;
                 case 2:
@@ -62,24 +64,32 @@ public class NINJA {
                     running_number = 3;
                     this.scene.addEventFilter(KeyEvent.KEY_PRESSED, this::donkey_flip);
                     this.scene.addEventFilter(KeyEvent.KEY_RELEASED, this::donkey_normal);
+                    this.scene.addEventFilter(KeyEvent.KEY_PRESSED, this::donkey_jump);
+                    this.scene.addEventFilter(KeyEvent.KEY_RELEASED,this::donkey_no_jump);
                     break;
                 case 3:
                     this.character.setImage(this.running3);
                     running_number = 4;
                     this.scene.addEventFilter(KeyEvent.KEY_PRESSED, this::donkey_flip);
                     this.scene.addEventFilter(KeyEvent.KEY_RELEASED, this::donkey_normal);
+                    this.scene.addEventFilter(KeyEvent.KEY_PRESSED, this::donkey_jump);
+                    this.scene.addEventFilter(KeyEvent.KEY_RELEASED,this::donkey_no_jump);
                     break;
                 case 4:
                     this.character.setImage(this.running4);
                     running_number = 5;
                     this.scene.addEventFilter(KeyEvent.KEY_PRESSED, this::donkey_flip);
                     this.scene.addEventFilter(KeyEvent.KEY_RELEASED, this::donkey_normal);
+                    this.scene.addEventFilter(KeyEvent.KEY_PRESSED, this::donkey_jump);
+                    this.scene.addEventFilter(KeyEvent.KEY_RELEASED,this::donkey_no_jump);
                     break;
                 case 5:
                     this.character.setImage(this.running5);
                     running_number = 6;
                     this.scene.addEventFilter(KeyEvent.KEY_PRESSED, this::donkey_flip);
                     this.scene.addEventFilter(KeyEvent.KEY_RELEASED, this::donkey_normal);
+                    this.scene.addEventFilter(KeyEvent.KEY_PRESSED, this::donkey_jump);
+                    this.scene.addEventFilter(KeyEvent.KEY_RELEASED,this::donkey_no_jump);
                     break;
 
                 case 6:
@@ -87,6 +97,8 @@ public class NINJA {
                     running_number = 7;
                     this.scene.addEventFilter(KeyEvent.KEY_PRESSED, this::donkey_flip);
                     this.scene.addEventFilter(KeyEvent.KEY_RELEASED, this::donkey_normal);
+                    this.scene.addEventFilter(KeyEvent.KEY_PRESSED, this::donkey_jump);
+                    this.scene.addEventFilter(KeyEvent.KEY_RELEASED,this::donkey_no_jump);
                     break;
 
                 case 7:
@@ -94,6 +106,8 @@ public class NINJA {
                     running_number = 1;
                     this.scene.addEventFilter(KeyEvent.KEY_PRESSED, this::donkey_flip);
                     this.scene.addEventFilter(KeyEvent.KEY_RELEASED, this::donkey_normal);
+                    this.scene.addEventFilter(KeyEvent.KEY_PRESSED, this::donkey_jump);
+                    this.scene.addEventFilter(KeyEvent.KEY_RELEASED,this::donkey_no_jump);
                     break;
             }
 
@@ -175,6 +189,7 @@ public class NINJA {
     }
     public void running_animation_stopper(){
         this.running_timeline.stop();
+        this.stick.initial_condition();
 
         this.blocks.switch_block_motion();
 
@@ -245,4 +260,27 @@ public class NINJA {
             this.character.setTranslateY(0);
         }
     }
+
+
+    private void donkey_jump(KeyEvent event) {
+        if (event.getCode() == KeyCode.UP) {
+            RotateTransition r = new RotateTransition(Duration.seconds(0.6), this.character);
+            r.setFromAngle(0);
+            r.setToAngle(360);
+            ParallelTransition combo = new ParallelTransition(
+                    new TranslateTransition(Duration.seconds(0.6), this.character),r
+            );
+            ((TranslateTransition) combo.getChildren().get(0)).setByY(-250);
+            combo.play();
+        }
+    }
+
+    private void donkey_no_jump(KeyEvent event) {
+        if (event.getCode() == KeyCode.UP) {
+            TranslateTransition donkey_no_jump = new TranslateTransition(Duration.seconds(0.6), this.character);
+            donkey_no_jump.setToY(0);
+            donkey_no_jump.play();
+        }
+    }
+
 }

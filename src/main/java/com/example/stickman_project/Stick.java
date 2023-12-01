@@ -26,7 +26,7 @@ public class Stick {
     private NINJA character;
     @FXML
     private Blocks blocks;
-    private final Timeline growing = new Timeline(new KeyFrame(Duration.seconds(0.01), event -> increase_height()));;
+    private final Timeline growing = new Timeline(new KeyFrame(Duration.seconds(0.01), event -> increase_height(this.stick)));;
     private Timeline Downwardtimeline;
     private Rotate rotation;
     @FXML
@@ -46,12 +46,12 @@ public class Stick {
         this.scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
             if (event.getCode() == KeyCode.SPACE) {
                 this.character.kicking_animation();
-                this.increase_height();
+                this.increase_height(this.stick);
             }
         });
         this.scene.addEventFilter(KeyEvent.KEY_RELEASED, event -> {
             if (event.getCode() == KeyCode.SPACE) {
-                this.stick_fall();
+                this.stick_fall(this.stick);
             }
         });
 
@@ -74,7 +74,7 @@ public class Stick {
 
 
     }
-    public void increase_height() {
+    public void increase_height(Rectangle stick) {
         if(flag){
             return;
         }
@@ -91,7 +91,7 @@ public class Stick {
         scene.setOnMouseReleased(null);
     }
 
-    public void stick_fall() {
+    public void stick_fall(Rectangle stick) {
         if(flag){
             return;
         }
@@ -107,7 +107,7 @@ public class Stick {
                     else{
                         this.Downwardtimeline.stop();
                         growing.stop();
-                        disable(scene);
+//                        disable(scene);
                         double endX = stick.getLayoutX()  + this.stick.getHeight();
                         this.stop_down_timeline(endX);
                         if(Math.abs(character.get_position() - endX) <= 1){
