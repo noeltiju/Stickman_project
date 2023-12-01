@@ -31,6 +31,7 @@ public class Stick {
     private Rotate rotation;
     @FXML
     private AnchorPane main_pane;
+    private Score_Tracking scoreTracker;
 
     private boolean flag=false;
     private Barrel barrel;
@@ -69,6 +70,9 @@ public class Stick {
         main_pane.getChildren().add(rectangle);
         this.barrel = new Barrel(this.blocks,this.character,this.main_pane);
         this.stick = rectangle;
+        this.scoreTracker.score_incrementer();
+
+
     }
     public void increase_height() {
         if(flag){
@@ -143,5 +147,9 @@ public class Stick {
     }
     public void stick_flag(){
         flag=false;
+    }
+
+    public void setTracker(Score_Tracking scoreTracker) {
+        this.scoreTracker = scoreTracker;
     }
 }

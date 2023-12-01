@@ -5,19 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6e7f1d4-1245-41b3-b385-b785207879f4" name="Changes" comment="Second Commit">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Blocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Blocks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/HelloApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/NINJA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/NINJA.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Stick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Stick.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/stickman_project/main-game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/stickman_project/main-game.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_running1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/donkeykong_running1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_running2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/donkeykong_running2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_running3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/donkeykong_running3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_running4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/donkeykong_running4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_running5.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/donkeykong_running5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_kicking1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/donkeykong_kicking1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_kicking2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/donkeykong_kicking2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_kicking3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_kicking4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_kicking5.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

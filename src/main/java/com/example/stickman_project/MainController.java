@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -35,6 +36,11 @@ public class MainController {
     @FXML
     private Button exit_button;
     private Scene scene;private Stage stage;
+    @FXML
+    private Label score_label;
+
+    @FXML
+    private Label bananas_label;
     Image standing = new Image("donkey_kong.png");
     Image running = new Image("running.png");
     BackgroundImage bg = new BackgroundImage(
@@ -44,7 +50,7 @@ public class MainController {
             BackgroundPosition.DEFAULT,
             BackgroundSize.DEFAULT);
 
-    private NINJA ninja; private Blocks blocks;private Stick stick;
+    private NINJA ninja; private Blocks blocks;private Stick stick; private Score_Tracking scoreTracker;
     @FXML
     public void initialize() throws InterruptedException {
         main_screen.setBackground(new Background(bg));
@@ -58,6 +64,8 @@ public class MainController {
         this.stick = new Stick(stick_rectangle,ninja,blocks,this.scene,main_screen);
         this.ninja.setStick(this.stick);this.ninja.setStage(this.stage);this.ninja.setScene(this.scene);
         this.blocks.setStick(this.stick);
+        this.scoreTracker = new Score_Tracking(score_label,bananas_label);
+        this.stick.setTracker(this.scoreTracker);
     }
     public void setScene(Scene scene) {
         this.scene = scene;

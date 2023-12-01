@@ -32,16 +32,14 @@ public class NINJA {
 
     private Image kicking1 = new Image("donkeykong_kicking1.png");
     private Image kicking2 = new Image("donkeykong_kicking2.png");
-    private Image kicking3 = new Image("donkeykong_kicking3.png");
-    private Image kicking4 = new Image("donkeykong_kicking4.png");
-    private Image kicking5 = new Image("donkeykong_kicking5.png");
 
 
-    private boolean flag=false;
+
+
 
 
     int running_number = 1;
-    private Timeline running_timeline = new Timeline(new KeyFrame(Duration.seconds(0.03), event ->{
+    private Timeline running_timeline = new Timeline(new KeyFrame(Duration.seconds(0.02), event ->{
         boolean dead = false;
         if (endx >= this.blocks.getSecondary_block().getLayoutX() + this.blocks.getSecondary_block().getWidth() || endx <= this.blocks.getSecondary_block().getLayoutX()){
             dead = true;
@@ -118,7 +116,7 @@ public class NINJA {
 
     }));
     int kicking_number = 1;
-    private Timeline kicking_timeline = new Timeline(new KeyFrame(Duration.seconds(0.1), event ->{
+    private Timeline kicking_timeline = new Timeline(new KeyFrame(Duration.seconds(0.10), event ->{
         switch (kicking_number) {
             case 1:
                 this.character.setImage(this.kicking1);
@@ -126,20 +124,9 @@ public class NINJA {
                 break;
             case 2:
                 this.character.setImage(this.kicking2);
-                this.kicking_number = 3;
-                break;
-            case 3:
-                this.character.setImage(this.kicking3);
-                this.kicking_number = 4;
-                break;
-            case 4:
-                this.character.setImage(this.kicking4);
-                this.kicking_number = 5;
-                break;
-            case 5:
-                this.character.setImage(this.kicking5);
                 this.kicking_number = 1;
                 break;
+
         }
 
     }));

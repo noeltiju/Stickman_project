@@ -21,7 +21,7 @@ public class Blocks {
     private NINJA ninja;
     private Random rand = new Random();
 
-    private Timeline moving_timeline = new Timeline(new KeyFrame(Duration.seconds(0.001), event ->{
+    private Timeline moving_timeline = new Timeline(new KeyFrame(Duration.seconds(0.0005), event ->{
         if (this.ninja.get_position() >= 157){
             this.stick.setPosition(this.stick.getPosition() - 1);
             this.secondary_block.setLayoutX(this.secondary_block.getLayoutX() - 1);
@@ -35,11 +35,26 @@ public class Blocks {
             this.starting_block.setWidth(this.secondary_block.getWidth());
             this.generate_second_block();
             this.moving_timeline.stop();
-            this.stick.initial_condition();
+
         }
 
     }));
     private Stick stick;
+
+    private Timeline rising_timeline = new Timeline(new KeyFrame(Duration.seconds(0.001), event ->{
+        if (this.secondary_block.getLayoutY() <= 550){
+            this.secondary_block.setLayoutY(this.secondary_block.getLayoutY() + 1);
+        }
+
+        else{
+            stop_timeline();
+        }
+    }));
+
+    private void stop_timeline() {
+        this.rising_timeline.stop();
+        this.stick.initial_condition();
+    }
 
     public Blocks(Rectangle first, Rectangle second, NINJA character){
         this.starting_block = first;
@@ -56,8 +71,13 @@ public class Blocks {
     public void generate_second_block(){
         int x =  400  + rand.nextInt(500);
         this.secondary_block.setLayoutX(x);
-        this.secondary_block.setLayoutY(550);
-        this.secondary_block.setWidth(rand.nextInt(200,500));
+        this.secondary_block.setLayoutY(0);
+        this.secondary_block.setHeight(327);
+        this.secondary_block.setWidth(rand.nextInt((int) this.ninja.get_character().getFitWidth(),300));
+        this.rising_timeline.setCycleCount(Timeline.INDEFINITE);
+        this.rising_timeline.play();
+
+
     }
     public void switch_block_motion(){
 
