@@ -33,14 +33,14 @@ public class Stick {
     private AnchorPane main_pane;
 
     private boolean flag=false;
-
-    public Stick(Rectangle stick, NINJA character, Blocks blocks, Scene scene, AnchorPane main_pane,ImageView characterImageView) {
+    private Barrel barrel;
+    public Stick(Rectangle stick, NINJA character, Blocks blocks, Scene scene, AnchorPane main_pane) {
         this.stick=stick;
         this.character = character;
         this.blocks = blocks;
         this.scene = scene;
         this.main_pane = main_pane;
-        this.characterImageView = characterImageView;
+        this.characterImageView = this.character.get_character();
 
         this.scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
             if (event.getCode() == KeyCode.SPACE) {
@@ -59,7 +59,7 @@ public class Stick {
     public void initial_condition(){
         this.previous_stick = this.stick;
         Rectangle rectangle = new Rectangle();
-        rectangle.setWidth(10);
+        rectangle.setWidth(5);
         rectangle.setHeight(0);
         rectangle.setLayoutX(239);
         rectangle.setLayoutY(550);
@@ -67,8 +67,7 @@ public class Stick {
         rectangle.setFill(Color.web("#8B500B"));
         rectangle.setStroke(Color.BLACK);
         main_pane.getChildren().add(rectangle);
-
-
+        this.barrel = new Barrel(this.blocks,this.character,this.main_pane);
         this.stick = rectangle;
     }
     public void increase_height() {
@@ -111,18 +110,6 @@ public class Stick {
                             this.character.running_animation_stopper_2();
 
                         }
-                        if (endX<this.blocks.getSecondary_block().getLayoutX()){
-                            RotateTransition r = new RotateTransition(Duration.seconds(3),this.characterImageView);
-                            r.setFromAngle(0);
-                            r.setToAngle(720);
-//                            r.setAutoReverse(true);
-                            r.setCycleCount(1);
-                            TranslateTransition fallTransition = new TranslateTransition(Duration.seconds(3), characterImageView);
-                            fallTransition.setByY(600);
-                            System.out.println("noooo\n");
-                            r.play();
-                            fallTransition.play();
-                        }
                         flag=true;
                         return;
                     }
@@ -133,7 +120,11 @@ public class Stick {
 
     }
     public void stop_down_timeline(double endX){
+        if (this.barrel != null){
+            this.barrel.barrel_roll();
+        }
         this.character.running_animation(endX);
+
     }
     public Rectangle getStick() {
         return stick;

@@ -1,8 +1,6 @@
 package com.example.stickman_project;
 
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -29,6 +27,8 @@ public class NINJA {
     private Image running3 = new Image("donkeykong_running3.png");
     private Image running4 = new Image("donkeykong_running4.png");
     private Image running5 = new Image("donkeykong_running5.png");
+    private Image running6 = new Image("donkeykong_running6.png");
+    private Image running7 = new Image("donkeykong_running7.png");
 
     private Image kicking1 = new Image("donkeykong_kicking1.png");
     private Image kicking2 = new Image("donkeykong_kicking2.png");
@@ -41,18 +41,15 @@ public class NINJA {
 
 
     int running_number = 1;
-    private Timeline running_timeline = new Timeline(new KeyFrame(Duration.seconds(0.005), event ->{
+    private Timeline running_timeline = new Timeline(new KeyFrame(Duration.seconds(0.03), event ->{
         boolean dead = false;
-        if (character.getLayoutX() >= this.blocks.getSecondary_block().getLayoutX() + this.blocks.getSecondary_block().getWidth() ){
+        if (endx >= this.blocks.getSecondary_block().getLayoutX() + this.blocks.getSecondary_block().getWidth() || endx <= this.blocks.getSecondary_block().getLayoutX()){
             dead = true;
-
         }
 
-        if (character.getLayoutX() < this.endx - 0){
-//            System.out.println(this.character.getLayoutX());
-//            System.out.println(this.endx);
-            this.character.setLayoutX(this.character.getLayoutX() + 1);
+        if ((!dead && (character.getLayoutX() < (this.blocks.getSecondary_block().getLayoutX() +this.blocks.getSecondary_block().getWidth()) - this.character.getFitWidth())) || (dead && this.character.getLayoutX() < endx)){
 
+            this.character.setLayoutX(this.character.getLayoutX() + 5);
             switch (running_number) {
                 case 1:
                     this.character.setImage(this.running1);
@@ -82,22 +79,37 @@ public class NINJA {
                     break;
                 case 5:
                     this.character.setImage(this.running5);
+                    running_number = 6;
+                    this.scene.addEventFilter(KeyEvent.KEY_PRESSED, this::donkey_flip);
+                    this.scene.addEventFilter(KeyEvent.KEY_RELEASED, this::donkey_normal);
+                    break;
+
+                case 6:
+                    this.character.setImage(this.running6);
+                    running_number = 7;
+                    this.scene.addEventFilter(KeyEvent.KEY_PRESSED, this::donkey_flip);
+                    this.scene.addEventFilter(KeyEvent.KEY_RELEASED, this::donkey_normal);
+                    break;
+
+                case 7:
+                    this.character.setImage(this.running7);
                     running_number = 1;
                     this.scene.addEventFilter(KeyEvent.KEY_PRESSED, this::donkey_flip);
                     this.scene.addEventFilter(KeyEvent.KEY_RELEASED, this::donkey_normal);
                     break;
             }
+
         }
         else{
 
             if (dead){
                 exit_routine();
 
+
             }else{
                 this.running_animation_stopper();
                 this.initial_image();
-                System.out.println(this.character.getLayoutX());
-                System.out.println(this.endx);
+
             }
 
 
@@ -201,6 +213,9 @@ public class NINJA {
     public double get_position(){
         return this.character.getLayoutX();
     }
+    public ImageView get_character(){
+        return this.character;
+    }
 
     public void setBlocks(Blocks blocks) {
         this.blocks = blocks;
@@ -218,7 +233,17 @@ public class NINJA {
         this.scene = scene;
     }
     public void exit_routine(){
-        System.out.println("Exited");
+        this.blocks.stop();
+        this.running_animation_stopper_2();
+        System.out.println("Apple");
+        RotateTransition r = new RotateTransition(Duration.seconds(3),this.character);
+        r.setFromAngle(0);
+        r.setToAngle(720);
+        r.setCycleCount(1);
+        TranslateTransition fallTransition = new TranslateTransition(Duration.seconds(3), this.character);
+        fallTransition.setByY(600);
+        r.play();
+        fallTransition.play();
     }
 
     private void donkey_flip(KeyEvent event) {
