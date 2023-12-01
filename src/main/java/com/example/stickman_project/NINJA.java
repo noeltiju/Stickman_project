@@ -189,8 +189,6 @@ public class NINJA {
     }
     public void running_animation_stopper(){
         this.running_timeline.stop();
-        this.stick.initial_condition();
-
         this.blocks.switch_block_motion();
 
     }
@@ -270,7 +268,7 @@ public class NINJA {
             ParallelTransition combo = new ParallelTransition(
                     new TranslateTransition(Duration.seconds(0.6), this.character),r
             );
-            ((TranslateTransition) combo.getChildren().get(0)).setByY(-250);
+            ((TranslateTransition) combo.getChildren().get(0)).setByY(-100);
             combo.play();
         }
     }
