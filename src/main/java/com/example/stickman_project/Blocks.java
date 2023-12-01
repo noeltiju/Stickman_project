@@ -68,6 +68,8 @@ public class Blocks {
         this.moving_timeline.setCycleCount(Animation.INDEFINITE);
         this.moving_timeline.play();
         this.stick.remove_previous_stick();
+        this.stick.stick_flag();
+
     }
     public void setStick(Stick stick) {
         this.stick = stick;

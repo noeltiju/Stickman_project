@@ -21,6 +21,6 @@
             <Font size="32.0" />
          </font>
       </Button>
-      <Rectangle fx:id="stick_rectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" layoutX="239.0" layoutY="550.0" stroke="BLACK" strokeType="INSIDE" width="10.0" />
+      <Rectangle fx:id="stick_rectangle" arcHeight="5.0" arcWidth="5.0" fill="#8b500b" layoutX="239.0" layoutY="550.0" stroke="BLACK" strokeType="INSIDE" width="10.0" />
    </children>
 </AnchorPane>

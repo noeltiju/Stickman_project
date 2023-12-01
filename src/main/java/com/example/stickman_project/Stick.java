@@ -1,6 +1,8 @@
 package com.example.stickman_project;
 import javafx.animation.KeyFrame;
+import javafx.animation.RotateTransition;
 import javafx.animation.Timeline;
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
@@ -10,10 +12,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
+import javafx.scene.image.ImageView;
+
 
 public class Stick {
     @FXML
     private  Rectangle stick;
+    @FXML
+    private ImageView characterImageView;
     private Rectangle previous_stick;
     private Scene scene;
     @FXML
@@ -25,13 +31,16 @@ public class Stick {
     private Rotate rotation;
     @FXML
     private AnchorPane main_pane;
-    public Stick(Rectangle stick, NINJA character, Blocks blocks, Scene scene, AnchorPane main_pane) {
+
+    private boolean flag=false;
+
+    public Stick(Rectangle stick, NINJA character, Blocks blocks, Scene scene, AnchorPane main_pane,ImageView characterImageView) {
         this.stick=stick;
         this.character = character;
         this.blocks = blocks;
         this.scene = scene;
         this.main_pane = main_pane;
-
+        this.characterImageView = characterImageView;
 
         this.scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
             if (event.getCode() == KeyCode.SPACE) {
@@ -54,17 +63,25 @@ public class Stick {
         rectangle.setHeight(0);
         rectangle.setLayoutX(239);
         rectangle.setLayoutY(550);
-        rectangle.setFill(Color.DODGERBLUE);
+        //rectangle.setFill(Color.DODGERBLUE);
+        rectangle.setFill(Color.web("#8B500B"));
+        rectangle.setStroke(Color.BLACK);
         main_pane.getChildren().add(rectangle);
+
 
         this.stick = rectangle;
     }
     public void increase_height() {
+        if(flag){
+            return;
+        }
         growing.setCycleCount(Timeline.INDEFINITE);
         growing.play();
         stick.setTranslateY(stick.getTranslateY() - 5);
         stick.setHeight(stick.getHeight() + 5);
     }
+
+
 
     public void disable(Scene scene){
         scene.setOnMousePressed(null);
@@ -72,6 +89,9 @@ public class Stick {
     }
 
     public void stick_fall() {
+        if(flag){
+            return;
+        }
         double change_x = stick.getWidth(),change_y=stick.getHeight();
         this.growing.stop();
         rotation = new Rotate(0, change_x, change_y);
@@ -87,9 +107,24 @@ public class Stick {
                         disable(scene);
                         double endX = stick.getLayoutX()  + this.stick.getHeight();
                         this.stop_down_timeline(endX);
+                        if(Math.abs(character.get_position() - endX) <= 1){
+                            this.character.running_animation_stopper_2();
+
+                        }
+                        if (endX<this.blocks.getSecondary_block().getLayoutX()){
+                            RotateTransition r = new RotateTransition(Duration.seconds(3),this.characterImageView);
+                            r.setFromAngle(0);
+                            r.setToAngle(720);
+//                            r.setAutoReverse(true);
+                            r.setCycleCount(1);
+                            TranslateTransition fallTransition = new TranslateTransition(Duration.seconds(3), characterImageView);
+                            fallTransition.setByY(600);
+                            System.out.println("noooo\n");
+                            r.play();
+                            fallTransition.play();
+                        }
+                        flag=true;
                         return;
-
-
                     }
                 })
         );
@@ -99,8 +134,6 @@ public class Stick {
     }
     public void stop_down_timeline(double endX){
         this.character.running_animation(endX);
-
-
     }
     public Rectangle getStick() {
         return stick;
@@ -116,5 +149,8 @@ public class Stick {
 
     public void remove_previous_stick(){
         this.main_pane.getChildren().remove(this.previous_stick);
+    }
+    public void stick_flag(){
+        flag=false;
     }
 }

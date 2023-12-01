@@ -7,24 +7,12 @@
     <list default="true" id="b6e7f1d4-1245-41b3-b385-b785207879f4" name="Changes" comment="Second Commit">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Blocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Blocks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/EndingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/EndingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/HelloController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/NINJA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/NINJA.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Stick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Stick.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/stickman_project/main-game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/stickman_project/main-game.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_kicking1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/donkeykong_kicking1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_kicking2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/donkeykong_kicking2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_kicking3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/donkeykong_kicking3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_kicking4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/donkeykong_kicking4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_kicking5.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/donkeykong_kicking5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_running1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/donkeykong_running1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_running2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/donkeykong_running2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_running3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/donkeykong_running3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_running4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/donkeykong_running4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/donkeykong_running5.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/donkeykong_running5.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +83,19 @@
       <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -124,6 +125,8 @@
       <workItem from="1701077048300" duration="254000" />
       <workItem from="1701115557349" duration="6283000" />
       <workItem from="1701151354227" duration="4785000" />
+      <workItem from="1701372368277" duration="8168000" />
+      <workItem from="1701380806049" duration="3755000" />
     </task>
     <task id="LOCAL-00001" summary="Second Commit">
       <option name="closed" value="true" />

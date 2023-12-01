@@ -55,7 +55,7 @@ public class MainController {
         this.ninja = new NINJA(character);
         this.blocks = new Blocks(starting_block,secondary_block,ninja);
         this.ninja.setBlocks(this.blocks);
-        this.stick = new Stick(stick_rectangle,ninja,blocks,this.scene,main_screen);
+        this.stick = new Stick(stick_rectangle,ninja,blocks,this.scene,main_screen,character);
         this.ninja.setStick(this.stick);this.ninja.setStage(this.stage);this.ninja.setScene(this.scene);
         this.blocks.setStick(this.stick);
     }
