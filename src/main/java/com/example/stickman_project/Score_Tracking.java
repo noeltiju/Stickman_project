@@ -22,7 +22,7 @@ public class Score_Tracking {
     }
 
 
-
-
-
+    public int getScore() {
+        return score;
+    }
 }

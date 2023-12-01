@@ -22,6 +22,7 @@ public class NINJA {
     private Blocks blocks;
     private Stick stick;
 
+    String character_status = "";
     double endx = 0;
     private Image running1 = new Image("donkeykong_running1.png");
     private Image running2 = new Image("donkeykong_running2.png");
@@ -170,6 +171,7 @@ public class NINJA {
     public NINJA(ImageView character) {
         this.character = character;
         this.character.setImage(running1);
+        this.character_status = "MOVE";
     }
 
     public void initial_image(){
@@ -248,12 +250,14 @@ public class NINJA {
 
     private void donkey_flip(KeyEvent event) {
         if (event.getCode() == KeyCode.DOWN) {
+            this.character_status = "DOWN";
             this.character.setTranslateY(90);
             this.character.setScaleY(-1);
         }
     }
     private void donkey_normal(KeyEvent event){
         if(event.getCode()==KeyCode.DOWN){
+            this.character_status = "MOVE";
             this.character.setScaleY(1);
             this.character.setTranslateY(0);
         }
@@ -262,6 +266,7 @@ public class NINJA {
 
     private void donkey_jump(KeyEvent event) {
         if (event.getCode() == KeyCode.UP) {
+            this.character_status = "UP";
             RotateTransition r = new RotateTransition(Duration.seconds(0.6), this.character);
             r.setFromAngle(0);
             r.setToAngle(360);
@@ -275,10 +280,15 @@ public class NINJA {
 
     private void donkey_no_jump(KeyEvent event) {
         if (event.getCode() == KeyCode.UP) {
+            this.character_status = "MOVE";
+
             TranslateTransition donkey_no_jump = new TranslateTransition(Duration.seconds(0.6), this.character);
             donkey_no_jump.setToY(0);
             donkey_no_jump.play();
         }
     }
 
+    public String getCharacter_status() {
+        return character_status;
+    }
 }

@@ -14,6 +14,9 @@ import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 import javafx.scene.image.ImageView;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 
 public class Stick {
     @FXML
@@ -34,7 +37,7 @@ public class Stick {
     private Score_Tracking scoreTracker;
 
     private boolean flag=false;
-    private Barrel barrel;
+    private ArrayList<Barrel> barrels = new ArrayList<Barrel>();
     public Stick(Rectangle stick, NINJA character, Blocks blocks, Scene scene, AnchorPane main_pane) {
         this.stick=stick;
         this.character = character;
@@ -68,9 +71,10 @@ public class Stick {
         rectangle.setFill(Color.web("#8B500B"));
         rectangle.setStroke(Color.BLACK);
         main_pane.getChildren().add(rectangle);
-        this.barrel = new Barrel(this.blocks,this.character,this.main_pane);
-        this.stick = rectangle;
         this.scoreTracker.score_incrementer();
+        Barrel barrel = new Barrel(this.blocks,this.character,this.main_pane);
+        this.barrels.add(barrel);
+        this.stick = rectangle;
 
 
     }
@@ -109,7 +113,11 @@ public class Stick {
                         growing.stop();
 //                        disable(scene);
                         double endX = stick.getLayoutX()  + this.stick.getHeight();
-                        this.stop_down_timeline(endX);
+                        try {
+                            this.stop_down_timeline(endX);
+                        } catch (InterruptedException ex) {
+                            throw new RuntimeException(ex);
+                        }
                         if(Math.abs(character.get_position() - endX) <= 1){
                             this.character.running_animation_stopper_2();
 
@@ -123,10 +131,13 @@ public class Stick {
         Downwardtimeline.play();
 
     }
-    public void stop_down_timeline(double endX){
-        if (this.barrel != null){
-            this.barrel.barrel_roll();
+    public void stop_down_timeline(double endX) throws InterruptedException {
+        if (!this.barrels.isEmpty()){
+            for (Barrel b : this.barrels){
+                b.barrel_roll();
+            }
         }
+
         this.character.running_animation(endX);
 
     }

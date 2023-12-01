@@ -11,7 +11,9 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
-public class Barrel{
+import java.util.Objects;
+
+public class Barrel implements Runnable{
     ImageView barrel_view = new ImageView();
     private Rotate rotation;
     private Blocks blocks;
@@ -19,16 +21,27 @@ public class Barrel{
     private NINJA ninja;
     private AnchorPane main_pane;
 
-    private Timeline barrel_rolling = new Timeline(new KeyFrame(Duration.seconds(0.004), event ->{
-        if (barrel_view.getLayoutX() > blocks.getPrimary_block().getLayoutX() ){
+    private final Timeline barrel_rolling = new Timeline(new KeyFrame(Duration.seconds(0.004), event ->{
+        if (!this.checkcollision()){
             rotation.setAngle(rotation.getAngle() - 1);
             barrel_view.setLayoutX(barrel_view.getLayoutX() - 1);
         }else{
             this.main_pane.getChildren().remove(barrel_view);
             stop_rolling();
+            this.ninja.exit_routine();
         }
 
     }));
+
+    private boolean checkcollision() {
+        if (this.barrel_view.getLayoutX() >= this.ninja.get_character().getLayoutX() && this.barrel_view.getLayoutX()+50 <= this.ninja.get_character().getLayoutX() + this.ninja.get_character().getFitWidth()){
+                if (Objects.equals(this.ninja.getCharacter_status(), "MOVE")){
+                    return true;
+                }
+        }
+
+        return false;
+    }
 
     private void stop_rolling() {
         this.barrel_rolling.stop();
@@ -53,8 +66,15 @@ public class Barrel{
 
     }
 
+    @Override
+    public void run(){
+        System.out.println("Executing");
+        this.barrel_rolling.setCycleCount(Timeline.INDEFINITE);
+        this.barrel_rolling.play();
+    }
+
     public void barrel_roll(){
-        barrel_rolling.setCycleCount(Timeline.INDEFINITE);
-        barrel_rolling.play();
+        this.barrel_rolling.setCycleCount(Timeline.INDEFINITE);
+        this.barrel_rolling.play();
     }
 }
