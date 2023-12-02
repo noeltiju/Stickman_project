@@ -69,14 +69,11 @@ public class MainController {
     }
     public void setScene(Scene scene) {
         this.scene = scene;
-        System.out.println("Set");
-        if (this.scene == null){
-            System.out.println("Ayo");
-        }
-        main_initialize();
     }
 
     public void setStage(Stage stage) {
         this.stage = stage;
+        main_initialize();
+
     }
 }

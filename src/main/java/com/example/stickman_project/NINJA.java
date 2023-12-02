@@ -2,6 +2,9 @@ package com.example.stickman_project;
 
 import javafx.animation.*;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -10,6 +13,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.io.IOException;
+import java.util.EventObject;
+import java.util.Objects;
 
 public class NINJA {
     private Scene scene;
@@ -116,7 +123,11 @@ public class NINJA {
         else{
 
             if (dead){
-                exit_routine();
+                try {
+                    exit_routine();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
 
 
             }else{
@@ -176,9 +187,7 @@ public class NINJA {
 
     public void initial_image(){
         this.character.setImage(running1);
-        this.scene.addEventFilter(KeyEvent.KEY_PRESSED,this::donkey_no_jump);
-
-
+        this.scene.addEventFilter(KeyEvent.KEY_PRESSED,this::donkey_normal);
     }
 
     public void set_position(double x){
@@ -237,7 +246,7 @@ public class NINJA {
     public void setScene(Scene scene) {
         this.scene = scene;
     }
-    public void exit_routine(){
+    public void exit_routine() throws IOException {
         this.blocks.stop();
         this.running_animation_stopper_2();
         System.out.println("Apple");
@@ -249,6 +258,18 @@ public class NINJA {
         fallTransition.setByY(600);
         r.play();
         fallTransition.play();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ending-view.fxml"));
+        Parent root = loader.load();
+        EndingController controller = loader.getController();
+
+        Scene scene = new Scene(root);
+
+        stage.setScene(scene);
+        controller.setStage(stage);
+
+        stage.show();
+
     }
 
     private void donkey_flip(KeyEvent event) {

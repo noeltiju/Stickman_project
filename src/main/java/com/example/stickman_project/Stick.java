@@ -16,6 +16,9 @@ import javafx.scene.image.ImageView;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 
 public class Stick {
@@ -132,9 +135,31 @@ public class Stick {
 
     }
     public void stop_down_timeline(double endX) throws InterruptedException {
-        if (!this.barrels.isEmpty()){
-            for (Barrel b : this.barrels){
-                b.barrel_roll();
+        ArrayList<Thread> barrelThreads = new ArrayList<>();
+
+        if (!this.barrels.isEmpty()) {
+            ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
+
+            for (Barrel barrel : this.barrels) {
+                Thread t = new Thread(barrel);
+                barrelThreads.add(t);
+                t.start();
+
+                // Schedule a task with a delay of 2 seconds
+                executorService.schedule(() -> {
+                    // Code to be executed after 2 seconds
+                }, 1, TimeUnit.SECONDS);
+            }
+
+            // Shutdown the executor after all tasks are scheduled
+            executorService.shutdown();
+        }
+
+        for (Thread barrelThread : barrelThreads) {
+            try {
+                barrelThread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
 

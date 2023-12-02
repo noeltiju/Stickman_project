@@ -11,6 +11,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.util.Objects;
 
 public class Barrel implements Runnable{
@@ -28,7 +29,11 @@ public class Barrel implements Runnable{
         }else{
             this.main_pane.getChildren().remove(barrel_view);
             stop_rolling();
-            this.ninja.exit_routine();
+            try {
+                this.ninja.exit_routine();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
     }));
