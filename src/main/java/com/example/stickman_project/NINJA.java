@@ -269,6 +269,7 @@ public class NINJA {
         controller.setStage(stage);
 
         stage.show();
+        controller.setScore(this.stick.getScoreTracker().getScore());
 
     }
 
