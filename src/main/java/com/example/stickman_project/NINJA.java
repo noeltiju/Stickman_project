@@ -298,7 +298,7 @@ public class NINJA {
             rotateTransition.setFromAngle(0);
             rotateTransition.setToAngle(360);
             TranslateTransition jumpTransition = new TranslateTransition(Duration.seconds(0.6), this.character);
-            jumpTransition.setByY(-100);
+            jumpTransition.setByY(-250);
             ParallelTransition combo = new ParallelTransition(rotateTransition, jumpTransition);
             combo.play();
 
