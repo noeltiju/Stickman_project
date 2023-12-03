@@ -260,7 +260,7 @@ public class NINJA {
         r.play();
         fallTransition.play();
 
-        
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ending-view.fxml"));
         Parent root = loader.load();
         EndingController controller = loader.getController();
