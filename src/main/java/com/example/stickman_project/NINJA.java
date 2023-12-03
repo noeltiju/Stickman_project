@@ -127,6 +127,8 @@ public class NINJA {
                     exit_routine();
                 } catch (IOException e) {
                     throw new RuntimeException(e);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
                 }
 
 
@@ -246,10 +248,9 @@ public class NINJA {
     public void setScene(Scene scene) {
         this.scene = scene;
     }
-    public void exit_routine() throws IOException {
+    public void exit_routine() throws IOException, InterruptedException {
         this.blocks.stop();
         this.running_animation_stopper_2();
-        System.out.println("Apple");
         RotateTransition r = new RotateTransition(Duration.seconds(3),this.character);
         r.setFromAngle(0);
         r.setToAngle(720);
@@ -259,6 +260,7 @@ public class NINJA {
         r.play();
         fallTransition.play();
 
+        
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ending-view.fxml"));
         Parent root = loader.load();
         EndingController controller = loader.getController();
@@ -294,11 +296,13 @@ public class NINJA {
     private void donkey_jump(KeyEvent event) {
         if (event.getCode() == KeyCode.UP && !isJumping) {
             isJumping = true;
+            this.character_status = "JUMP";
+
             RotateTransition rotateTransition = new RotateTransition(Duration.seconds(0.6), this.character);
             rotateTransition.setFromAngle(0);
             rotateTransition.setToAngle(360);
             TranslateTransition jumpTransition = new TranslateTransition(Duration.seconds(0.6), this.character);
-            jumpTransition.setByY(-250);
+            jumpTransition.setByY(-150);
             ParallelTransition combo = new ParallelTransition(rotateTransition, jumpTransition);
             combo.play();
 
@@ -309,6 +313,7 @@ public class NINJA {
         if (event.getCode() == KeyCode.UP) {
 
             isJumping = false;
+            this.character_status = "MOVE";
 
 
             TranslateTransition donkeyNoJump = new TranslateTransition(Duration.seconds(0.6), this.character);
@@ -320,5 +325,10 @@ public class NINJA {
 
     public String getCharacter_status() {
         return character_status;
+    }
+
+    public boolean getJumping(){
+
+        return this.isJumping;
     }
 }

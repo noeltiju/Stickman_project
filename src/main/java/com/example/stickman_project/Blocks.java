@@ -69,7 +69,7 @@ public class Blocks {
         this.secondary_block.setVisible(true);
     }
     public void generate_second_block(){
-        int x =  400  + rand.nextInt(500);
+        int x =  500  + rand.nextInt(500);
         this.secondary_block.setLayoutX(x);
         this.secondary_block.setLayoutY(0);
         this.secondary_block.setHeight(327);

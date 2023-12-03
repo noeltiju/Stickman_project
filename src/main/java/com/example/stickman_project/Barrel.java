@@ -33,6 +33,8 @@ public class Barrel implements Runnable{
                 this.ninja.exit_routine();
             } catch (IOException e) {
                 throw new RuntimeException(e);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
         }
 
@@ -40,15 +42,11 @@ public class Barrel implements Runnable{
 
     private boolean checkcollision() {
         if (this.barrel_view.getLayoutX() >= this.ninja.get_character().getLayoutX() && this.barrel_view.getLayoutX()+50 <= this.ninja.get_character().getLayoutX() + this.ninja.get_character().getFitWidth()){
-            if (this.barrel_view.getLayoutY() + 50 > this.ninja.get_character().getLayoutY() + this.ninja.get_character().getFitHeight()){
-                return false;
+          if (Objects.equals(this.ninja.getCharacter_status(), "MOVE") && !this.ninja.getJumping()){
+            return true;
             }
-
-            if (Objects.equals(this.ninja.getCharacter_status(), "MOVE")){
-                return true;
-            }
-
         }
+        System.out.println(this.ninja.getJumping());
 
         return false;
     }
