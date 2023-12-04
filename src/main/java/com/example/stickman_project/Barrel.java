@@ -46,7 +46,6 @@ public class Barrel implements Runnable{
             return true;
             }
         }
-        System.out.println(this.ninja.getJumping());
 
         return false;
     }
@@ -76,13 +75,11 @@ public class Barrel implements Runnable{
 
     @Override
     public void run(){
-        System.out.println("Executing");
         this.barrel_rolling.setCycleCount(Timeline.INDEFINITE);
         this.barrel_rolling.play();
     }
 
     public void barrel_roll(){
-        System.out.println("Executing");
         this.barrel_rolling.setCycleCount(Timeline.INDEFINITE);
         this.barrel_rolling.play();
     }

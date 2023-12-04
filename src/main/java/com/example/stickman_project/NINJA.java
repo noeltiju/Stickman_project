@@ -42,16 +42,25 @@ public class NINJA {
     private Image kicking1 = new Image("donkeykong_kicking1.png");
     private Image kicking2 = new Image("donkeykong_kicking2.png");
 
+    private boolean dead = false;
 
-
-
-
-
-    int running_number = 1;
+    int running_number = 1;int kicking_number = 1;
     private Timeline running_timeline = new Timeline(new KeyFrame(Duration.seconds(0.02), event ->{
-        boolean dead = false;
         if (endx >= this.blocks.getSecondary_block().getLayoutX() + this.blocks.getSecondary_block().getWidth() || endx <= this.blocks.getSecondary_block().getLayoutX()){
             dead = true;
+        }
+
+        if (this.character.getLayoutX() + this.character.getFitWidth() >= this.blocks.getSecondary_block().getLayoutX()){
+            if (this.character_status == "DOWN"){
+                dead = true;
+                try {
+                    exit_routine();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }
 
         if ((!dead && (character.getLayoutX() < (this.blocks.getSecondary_block().getLayoutX() +this.blocks.getSecondary_block().getWidth()) - this.character.getFitWidth())) || (dead && this.character.getLayoutX() < endx)){
@@ -143,7 +152,6 @@ public class NINJA {
 
 
     }));
-    int kicking_number = 1;
     private Timeline kicking_timeline = new Timeline(new KeyFrame(Duration.seconds(0.10), event ->{
         switch (kicking_number) {
             case 1:
@@ -158,8 +166,19 @@ public class NINJA {
         }
 
     }));
+    private Timeline dying_timeline = new Timeline(new KeyFrame(Duration.seconds(0.005), event ->{
+        if (this.character.getLayoutY() >= 800){
+            try {
+                change_screen_end();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }else{
+            this.character.setRotate(this.character.getRotate() + 2);
+            this.character.setLayoutY(this.character.getLayoutY() + 2);
+        }
 
-
+    }));
     private Timeline falling_timeline = new Timeline(new KeyFrame(Duration.seconds(0.1), event ->{
         double stick_end = stick.getStick().getLayoutX()+stick.getStick().getHeight();
         double block_end = blocks.getSecondary_block().getLayoutX();
@@ -249,18 +268,17 @@ public class NINJA {
         this.scene = scene;
     }
     public void exit_routine() throws IOException, InterruptedException {
+        this.dead = true;
         this.blocks.stop();
         this.running_animation_stopper_2();
-        RotateTransition r = new RotateTransition(Duration.seconds(3),this.character);
-        r.setFromAngle(0);
-        r.setToAngle(720);
-        r.setCycleCount(1);
-        TranslateTransition fallTransition = new TranslateTransition(Duration.seconds(3), this.character);
-        fallTransition.setByY(600);
-        r.play();
-        fallTransition.play();
 
+        dying_timeline.setCycleCount(Timeline.INDEFINITE);
+        dying_timeline.play();
 
+    }
+
+    public void change_screen_end() throws IOException {
+        dying_timeline.stop();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ending-view.fxml"));
         Parent root = loader.load();
         EndingController controller = loader.getController();
@@ -272,11 +290,10 @@ public class NINJA {
 
         stage.show();
         controller.setScore(this.stick.getScoreTracker().getScore());
-
     }
 
     private void donkey_flip(KeyEvent event) {
-        if (event.getCode() == KeyCode.DOWN) {
+        if (event.getCode() == KeyCode.DOWN && !this.dead) {
             this.character_status = "DOWN";
             this.character.setTranslateY(90);
             this.character.setScaleY(-1);
@@ -294,7 +311,7 @@ public class NINJA {
     private boolean isJumping = false;
 
     private void donkey_jump(KeyEvent event) {
-        if (event.getCode() == KeyCode.UP && !isJumping) {
+        if (event.getCode() == KeyCode.UP && !isJumping && !this.dead) {
             isJumping = true;
             this.character_status = "JUMP";
 

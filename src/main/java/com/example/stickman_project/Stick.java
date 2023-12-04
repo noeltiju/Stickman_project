@@ -39,24 +39,31 @@ public class Stick {
     private AnchorPane main_pane;
     private Score_Tracking scoreTracker;
 
+    private Banana banana;
     private boolean flag=false;
+
+    private boolean stick_activate = false;
     private ArrayList<Barrel> barrels = new ArrayList<Barrel>();
     public Stick(Rectangle stick, NINJA character, Blocks blocks, Scene scene, AnchorPane main_pane) {
+        this.banana = new Banana(blocks,character,main_pane);
+
+
         this.stick=stick;
         this.character = character;
         this.blocks = blocks;
         this.scene = scene;
         this.main_pane = main_pane;
         this.characterImageView = this.character.get_character();
+        this.stick_activate = true;
 
         this.scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
-            if (event.getCode() == KeyCode.SPACE) {
+            if (event.getCode() == KeyCode.SPACE && this.stick_activate) {
                 this.character.kicking_animation();
                 this.increase_height(this.stick);
             }
         });
         this.scene.addEventFilter(KeyEvent.KEY_RELEASED, event -> {
-            if (event.getCode() == KeyCode.SPACE) {
+            if (event.getCode() == KeyCode.SPACE && this.stick_activate) {
                 this.stick_fall(this.stick);
             }
         });
@@ -70,7 +77,7 @@ public class Stick {
         rectangle.setHeight(0);
         rectangle.setLayoutX(239);
         rectangle.setLayoutY(550);
-        //rectangle.setFill(Color.DODGERBLUE);
+
         rectangle.setFill(Color.web("#8B500B"));
         rectangle.setStroke(Color.BLACK);
         main_pane.getChildren().add(rectangle);
@@ -78,6 +85,9 @@ public class Stick {
         Barrel barrel = new Barrel(this.blocks,this.character,this.main_pane);
         this.barrels.add(barrel);
         this.stick = rectangle;
+        this.stick_activate = true;
+
+        this.banana.setPosition(this.blocks.getPrimary_block().getLayoutX() + this.blocks.getPrimary_block().getWidth() , this.blocks.getSecondary_block().getLayoutX());
 
 
     }
@@ -93,10 +103,6 @@ public class Stick {
 
 
 
-    public void disable(Scene scene){
-        scene.setOnMousePressed(null);
-        scene.setOnMouseReleased(null);
-    }
 
     public void stick_fall(Rectangle stick) {
         if(flag){
@@ -113,8 +119,8 @@ public class Stick {
                     }
                     else{
                         this.Downwardtimeline.stop();
+                        this.stick_activate = false;
                         growing.stop();
-//                        disable(scene);
                         double endX = stick.getLayoutX()  + this.stick.getHeight();
                         try {
                             this.stop_down_timeline(endX);
@@ -192,4 +198,5 @@ public class Stick {
     public Score_Tracking getScoreTracker() {
         return scoreTracker;
     }
+
 }
