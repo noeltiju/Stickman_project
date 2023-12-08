@@ -6,13 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b6e7f1d4-1245-41b3-b385-b785207879f4" name="Changes" comment="Second Commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/game_state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/game_state.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Banana.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Banana.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Blocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Blocks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/NINJA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/NINJA.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Score_Tracking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Score_Tracking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/stickman_project/main-game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/stickman_project/main-game.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +122,8 @@
       <workItem from="1702027176511" duration="10930000" />
       <workItem from="1702038156763" duration="16000" />
       <workItem from="1702044389160" duration="642000" />
-      <workItem from="1702045041860" duration="5625000" />
+      <workItem from="1702045041860" duration="6270000" />
+      <workItem from="1702051344713" duration="380000" />
     </task>
     <task id="LOCAL-00001" summary="Second Commit">
       <option name="closed" value="true" />

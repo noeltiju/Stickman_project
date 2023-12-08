@@ -13,8 +13,12 @@ package com.example.stickman_project;
         import javafx.stage.Stage;
         import javafx.util.Duration;
 
+        import javafx.scene.media.Media;
+        import javafx.scene.media.MediaPlayer;
+
         import java.io.IOException;
         import java.util.Objects;
+        import java.net.URL;
 
 public class NINJA {
     private Scene scene;
@@ -256,14 +260,20 @@ public class NINJA {
     }
 
     public void choose_revive(){
-        this.dead = false;
-        this.character_status = "MOVE";
-        this.score_tracker.bananas_used_revive();
-        this.revive.setVisible(false);
-        this.character.setLayoutX(this.blocks.getSecondary_block().getLayoutX());
-        this.initial_image();
-        this.stick.getStick().setHeight(0);
-        this.blocks.switch_block_motion();
+
+        if (this.score_tracker.getBananas_score() >= 10){
+            this.dead = false;
+            this.character_status = "MOVE";
+            this.score_tracker.bananas_used_revive();
+            this.revive.setVisible(false);
+            this.character.setLayoutX(this.blocks.getSecondary_block().getLayoutX());
+            this.initial_image();
+            this.stick.getStick().setHeight(0);
+            this.blocks.switch_block_motion();
+
+    }else{
+        no_revive();
+        }
     }
 
 
@@ -333,6 +343,7 @@ public class NINJA {
             jumpTimeline.play();
         }
     }
+
     private void disableJump(KeyEvent event) {
         if (event.getCode() == KeyCode.UP && !this.no_jump) {}
     }
@@ -342,10 +353,6 @@ public class NINJA {
         return character_status;
     }
 
-    public boolean getJumping(){
-
-        return this.isJumping;
-    }
     public void setRevive(Pane revive) {
         this.revive = revive;
     }

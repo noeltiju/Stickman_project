@@ -79,6 +79,10 @@ public class Score_Tracking {
         return high_score;
     }
 
+    public int getBananas_score() {
+        return bananas;
+    }
+
     public void bananas_used_revive(){
         bananas -= 10;
         set_bananas_score(bananas);
