@@ -3,20 +3,17 @@ package com.example.stickman_project;
 import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.transform.Rotate;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.util.EventObject;
-import java.util.Objects;
 
 public class NINJA {
     private Scene scene;
@@ -28,9 +25,10 @@ public class NINJA {
     ImageView character;
     private Blocks blocks;
     private Stick stick;
-
+    private int deaths = 0;
     String character_status = "";
     double endx = 0;
+    private Pane revive;
     private Image running1 = new Image("donkeykong_running1.png");
     private Image running2 = new Image("donkeykong_running2.png");
     private Image running3 = new Image("donkeykong_running3.png");
@@ -169,33 +167,13 @@ public class NINJA {
     private Timeline dying_timeline = new Timeline(new KeyFrame(Duration.seconds(0.005), event ->{
         if (this.character.getLayoutY() >= 800){
             try {
-                change_screen_end();
+                change_to_end_screen();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }else{
             this.character.setRotate(this.character.getRotate() + 2);
             this.character.setLayoutY(this.character.getLayoutY() + 2);
-        }
-
-    }));
-    private Timeline falling_timeline = new Timeline(new KeyFrame(Duration.seconds(0.1), event ->{
-        double stick_end = stick.getStick().getLayoutX()+stick.getStick().getHeight();
-        double block_end = blocks.getSecondary_block().getLayoutX();
-        if(stick_end <block_end){
-            this.character.setRotate(10);
-            this.character.setRotate(20);
-            this.character.setRotate(30);
-            this.character.setRotate(40);
-            this.character.setRotate(50);
-            this.character.setRotate(60);
-            this.character.setRotate(70);
-            this.character.setRotate(80);
-            this.character.setRotate(90);
-            this.character.setRotate(100);
-        }
-        else{
-            return;
         }
 
     }));
@@ -236,10 +214,6 @@ public class NINJA {
         this.kicking_timeline.play();
 
     }
-    public void falling_animation(){
-        this.falling_timeline.setCycleCount(Animation.INDEFINITE);
-        this.falling_timeline.play();
-    }
     public void kicking_animation_stopper(){
         this.kicking_timeline.stop();
 
@@ -268,16 +242,31 @@ public class NINJA {
         this.scene = scene;
     }
     public void exit_routine() throws IOException, InterruptedException {
-        this.dead = true;
         this.blocks.stop();
         this.running_animation_stopper_2();
-
-        dying_timeline.setCycleCount(Timeline.INDEFINITE);
-        dying_timeline.play();
+        this.revive.setVisible(true);
 
     }
 
-    public void change_screen_end() throws IOException {
+    public void no_revive(){
+        this.dead = true;
+        this.revive.setVisible(false);
+        dying_timeline.setCycleCount(Timeline.INDEFINITE);
+        dying_timeline.play();
+    }
+
+    public void choose_revive(){
+        this.dead = false;
+        this.character_status = "MOVE";
+        this.revive.setVisible(false);
+        this.character.setLayoutX(this.blocks.getSecondary_block().getLayoutX());
+        this.initial_image();
+        this.stick.getStick().setHeight(0);
+        this.blocks.switch_block_motion();
+    }
+
+
+    public void change_to_end_screen() throws IOException {
         dying_timeline.stop();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ending-view.fxml"));
         Parent root = loader.load();
@@ -348,4 +337,9 @@ public class NINJA {
 
         return this.isJumping;
     }
+    public void setRevive(Pane revive) {
+        this.revive = revive;
+    }
+
+
 }

@@ -193,6 +193,7 @@ public class Stick {
 
     public void setTracker(Score_Tracking scoreTracker) {
         this.scoreTracker = scoreTracker;
+        this.banana.setScoreTracking(scoreTracker);
     }
 
     public Score_Tracking getScoreTracker() {

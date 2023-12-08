@@ -42,7 +42,7 @@ public class Barrel implements Runnable{
 
     private boolean checkcollision() {
         if (this.barrel_view.getLayoutX() >= this.ninja.get_character().getLayoutX() && this.barrel_view.getLayoutX()+50 <= this.ninja.get_character().getLayoutX() + this.ninja.get_character().getFitWidth()){
-          if (Objects.equals(this.ninja.getCharacter_status(), "MOVE") && !this.ninja.getJumping()){
+          if (Objects.equals(this.ninja.getCharacter_status(), "MOVE")){
             return true;
             }
         }

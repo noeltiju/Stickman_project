@@ -21,6 +21,7 @@ public class Blocks {
     private NINJA ninja;
     private Random rand = new Random();
 
+
     private Timeline moving_timeline = new Timeline(new KeyFrame(Duration.seconds(0.0005), event ->{
         if (this.ninja.get_position() >= 157){
             this.stick.setPosition(this.stick.getPosition() - 1);
@@ -60,13 +61,6 @@ public class Blocks {
         this.starting_block = first;
         this.secondary_block = second;
         this.ninja = character;
-    }
-    public void generate_second_block_initial(){
-        int x = 380 + rand.nextInt(500);
-        this.secondary_block.setLayoutX(x);
-        this.secondary_block.setLayoutY(550);
-        this.secondary_block.setWidth(rand.nextInt(100,500));
-        this.secondary_block.setVisible(true);
     }
     public void generate_second_block(){
         int x =  500  + rand.nextInt(500);

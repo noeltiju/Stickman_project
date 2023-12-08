@@ -56,12 +56,6 @@ public class HelloController {
 
 
     public void setup_first_frame(ActionEvent event) throws IOException {
-//        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("main-game.fxml")));
-//        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//        Scene scene = new Scene(root);
-//        stage.setTitle("Stick Hero!");
-//        stage.setScene(scene);
-//        stage.show();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("main-game.fxml"));
         Parent root = loader.load();

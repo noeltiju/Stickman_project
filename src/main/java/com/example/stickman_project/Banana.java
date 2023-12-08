@@ -18,10 +18,11 @@ public class Banana {
     private Blocks blocks;
     private NINJA ninja;
     private int moving = 0;
+    private Score_Tracking scoreTracking;
 
     private Random rand = new Random();
-    private final Timeline moving_banana = new Timeline(new KeyFrame(Duration.seconds(0.004), event ->{
-        if (!this.checkcollision()){
+    private final Timeline moving_banana = new Timeline(new KeyFrame(Duration.seconds(0.01), event ->{
+        if (!this.checkcollision() && this.banana_view.getLayoutX() < this.blocks.getSecondary_block().getLayoutX()){
             if (moving == 0){
                 this.banana_view.setLayoutY(this.banana_view.getLayoutY() - 1);
                 moving = 1;
@@ -30,7 +31,7 @@ public class Banana {
                 moving = 0;
             }
         }else{
-            deactivate();
+              deactivate();
         }
 
     }));
@@ -38,7 +39,6 @@ public class Banana {
     private boolean checkcollision() {
         if (this.banana_view.getLayoutX() >= this.ninja.get_character().getLayoutX() && this.banana_view.getLayoutX()+50 <= this.ninja.get_character().getLayoutX() + this.ninja.get_character().getFitWidth()){
             if (Objects.equals(this.ninja.getCharacter_status(), "DOWN")){
-                System.out.println("Hit");
                 return true;
             }
         }
@@ -67,6 +67,7 @@ public class Banana {
     }
 
     public void deactivate(){
+        scoreTracking.banana_incrementer();
         this.banana_view.setVisible(false);
         this.moving_banana.stop();
     }
@@ -76,7 +77,9 @@ public class Banana {
         this.moving_banana.setCycleCount(Timeline.INDEFINITE);
         this.moving_banana.play();
 
-
     }
 
+    public void setScoreTracking(Score_Tracking scoreTracking) {
+        this.scoreTracking = scoreTracking;
+    }
 }

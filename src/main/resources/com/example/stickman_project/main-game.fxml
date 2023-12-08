@@ -5,6 +5,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
@@ -29,5 +30,22 @@
             <Font name="Bodoni 72 Bold" size="30.0" />
          </font>
       </Label>
+      <Pane fx:id="pane" layoutX="530.0" layoutY="214.0" prefHeight="200.0" prefWidth="404.0" style="-fx-background-color: 094343;">
+         <children>
+            <Button layoutX="220.0" layoutY="130.0" mnemonicParsing="false" onAction="#revive" prefHeight="44.0" prefWidth="90.0" style="-fx-background-color: green; -fx-background-radius: 20;" text="Yes" />
+            <Button layoutX="97.0" layoutY="130.0" mnemonicParsing="false" onAction="#die" prefHeight="44.0" prefWidth="90.0" style="-fx-background-color: red; -fx-background-radius: 20;" text="N o" />
+            <Label alignment="CENTER" layoutX="101.0" layoutY="39.0" prefHeight="59.0" prefWidth="214.0" text="Do you want to Revive?">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <ImageView fitHeight="47.0" fitWidth="53.0" layoutX="1306.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../banana.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="bananas_label" layoutX="1284.0" layoutY="119.0" text="0" />
    </children>
 </AnchorPane>

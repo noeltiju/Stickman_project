@@ -40,4 +40,15 @@ public class EndingController {
     public void setScore(int score) {
         this.score.setText(String.valueOf(score));
     }
+
+    public void new_game(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+        Parent root = loader.load();
+        HelloController controller = loader.getController();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        controller.setStage(stage);
+
+        stage.show();
+    }
 }

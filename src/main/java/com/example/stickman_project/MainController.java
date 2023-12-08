@@ -17,6 +17,7 @@ import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.PrimitiveIterator;
@@ -38,6 +39,9 @@ public class MainController {
     private Scene scene;private Stage stage;
     @FXML
     private Label score_label;
+    @FXML
+    private Pane pane;
+
 
     @FXML
     private Label bananas_label;
@@ -55,14 +59,16 @@ public class MainController {
     public void initialize() throws InterruptedException {
         main_screen.setBackground(new Background(bg));
         stick_rectangle.setMouseTransparent(false);
+        pane.setVisible(false);
     }
 
-    public void main_initialize(){
+    public void main_initialize() throws FileNotFoundException {
         this.ninja = new NINJA(character);
         this.blocks = new Blocks(starting_block,secondary_block,ninja);
         this.ninja.setBlocks(this.blocks);
         this.stick = new Stick(stick_rectangle,ninja,blocks,this.scene,main_screen);
         this.ninja.setStick(this.stick);this.ninja.setStage(this.stage);this.ninja.setScene(this.scene);
+        this.ninja.setRevive(pane);
         this.blocks.setStick(this.stick);
         this.scoreTracker = new Score_Tracking(score_label,bananas_label);
         this.stick.setTracker(this.scoreTracker);
@@ -71,9 +77,19 @@ public class MainController {
         this.scene = scene;
     }
 
-    public void setStage(Stage stage) {
+    public void setStage(Stage stage) throws FileNotFoundException {
         this.stage = stage;
         main_initialize();
 
+    }
+
+    public void revive(ActionEvent event){
+        System.out.println("Continue");
+        this.ninja.choose_revive();
+    }
+
+    public void die(ActionEvent event) throws IOException {
+        System.out.println("Dead");
+        this.ninja.no_revive();
     }
 }
