@@ -73,22 +73,6 @@ public class HelloController {
         stage.show();
 
     }
-
-
-    public void block_animation(){}
-    public void buying_cherry(){}
-    public void no_ads(){}
-    public void help() {}
-    public void help_stick(){}
-    public void help_slash(){}
-    public void modify_volume(){
-
-    }
-
-    public void stick_watermelon_tutorial(){
-
-    }
-
     public void setScene(Scene scene) {
         this.scene = scene;
     }

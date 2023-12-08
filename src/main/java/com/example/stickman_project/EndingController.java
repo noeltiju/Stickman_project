@@ -3,21 +3,13 @@ package com.example.stickman_project;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
 import java.io.IOException;
-import java.util.Objects;
-import java.util.Random;
 
 
 public class EndingController {
@@ -25,6 +17,9 @@ public class EndingController {
     private Stage stage;
     @FXML
     private Label score;
+    @FXML
+    private Label high_score;
+
     public void initialize(){
 
     }
@@ -37,9 +32,15 @@ public class EndingController {
         this.stage = stage;
     }
 
-    public void setScore(int score) {
+    public void setScore(int score, int highScore) {
+
         this.score.setText(String.valueOf(score));
+        System.out.println(score);
+        
+        System.out.println(highScore);
+        this.high_score.setText(String.valueOf(highScore));
     }
+
 
     public void new_game(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
@@ -50,5 +51,6 @@ public class EndingController {
         controller.setStage(stage);
 
         stage.show();
+
     }
 }

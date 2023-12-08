@@ -33,12 +33,12 @@
                   <Font name="Bodoni 72 Smallcaps Book" size="19.0" />
                </font>
             </Text>
-            <Text layoutX="70.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10">
+            <Label fx:id="score" layoutX="74.0" layoutY="26.0" prefHeight="37.0" prefWidth="30.0">
                <font>
-                  <Font name="System Bold" size="27.0" />
+                  <Font size="30.0" />
                </font>
-            </Text>
-            <Label fx:id="score" layoutX="68.0" layoutY="26.0" prefHeight="37.0" prefWidth="30.0">
+            </Label>
+            <Label fx:id="high_score" layoutX="72.0" layoutY="85.0" prefHeight="37.0" prefWidth="30.0">
                <font>
                   <Font size="30.0" />
                </font>

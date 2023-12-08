@@ -1,11 +1,12 @@
 package com.example.stickman_project;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.util.Scanner;
 
 public class Score_Tracking {
@@ -22,7 +23,6 @@ public class Score_Tracking {
     public Score_Tracking(Label label1, Label label2) throws FileNotFoundException {
         this.score_label = label1;
         this.bananas_label = label2;
-        this.File_reader();
     }
 
     public void File_reader() throws FileNotFoundException {
@@ -34,9 +34,27 @@ public class Score_Tracking {
         this.score = 0;
         set_bananas_score(bananas);
 
+        in.close();
+
+
     }
 
-    public void File_writer() throws FileNotFoundException{
+    public void File_writer() throws IOException {
+        if (score > high_score){
+            high_score = score;
+        }
+        String[] lines = {
+                "Bananas: " + bananas,
+                "HighScore: " + high_score
+        };
+        BufferedWriter out = new BufferedWriter(new FileWriter("src/main/game_state.txt"));
+        for (String line: lines){
+            out.write(line);
+            out.newLine();
+        }
+
+        out.close();
+
     }
 
     public void score_incrementer(){
@@ -55,5 +73,9 @@ public class Score_Tracking {
 
     public int getScore() {
         return score;
+    }
+
+    public int getHigh_score() {
+        return high_score;
     }
 }

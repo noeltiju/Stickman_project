@@ -43,6 +43,8 @@ public class NINJA {
     private boolean dead = false;
 
     int running_number = 1;int kicking_number = 1;
+
+    private Score_Tracking score_tracker;
     private Timeline running_timeline = new Timeline(new KeyFrame(Duration.seconds(0.02), event ->{
         if (endx >= this.blocks.getSecondary_block().getLayoutX() + this.blocks.getSecondary_block().getWidth() || endx <= this.blocks.getSecondary_block().getLayoutX()){
             dead = true;
@@ -268,6 +270,8 @@ public class NINJA {
 
     public void change_to_end_screen() throws IOException {
         dying_timeline.stop();
+        this.score_tracker.File_writer();
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ending-view.fxml"));
         Parent root = loader.load();
         EndingController controller = loader.getController();
@@ -278,7 +282,8 @@ public class NINJA {
         controller.setStage(stage);
 
         stage.show();
-        controller.setScore(this.stick.getScoreTracker().getScore());
+        controller.setScore(this.score_tracker.getScore(),this.score_tracker.getHigh_score());
+
     }
 
     private void donkey_flip(KeyEvent event) {
@@ -341,5 +346,7 @@ public class NINJA {
         this.revive = revive;
     }
 
-
+    public void setScore_tracker(Score_Tracking score_tracker) {
+        this.score_tracker = score_tracker;
+    }
 }

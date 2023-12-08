@@ -63,14 +63,16 @@ public class MainController {
     }
 
     public void main_initialize() throws FileNotFoundException {
+        this.scoreTracker = new Score_Tracking(score_label,bananas_label);
+        this.scoreTracker.File_reader();
+
         this.ninja = new NINJA(character);
         this.blocks = new Blocks(starting_block,secondary_block,ninja);
         this.ninja.setBlocks(this.blocks);
         this.stick = new Stick(stick_rectangle,ninja,blocks,this.scene,main_screen);
-        this.ninja.setStick(this.stick);this.ninja.setStage(this.stage);this.ninja.setScene(this.scene);
+        this.ninja.setStick(this.stick);this.ninja.setStage(this.stage);this.ninja.setScene(this.scene);this.ninja.setScore_tracker(scoreTracker);
         this.ninja.setRevive(pane);
         this.blocks.setStick(this.stick);
-        this.scoreTracker = new Score_Tracking(score_label,bananas_label);
         this.stick.setTracker(this.scoreTracker);
     }
     public void setScene(Scene scene) {
@@ -84,12 +86,10 @@ public class MainController {
     }
 
     public void revive(ActionEvent event){
-        System.out.println("Continue");
         this.ninja.choose_revive();
     }
 
     public void die(ActionEvent event) throws IOException {
-        System.out.println("Dead");
         this.ninja.no_revive();
     }
 }

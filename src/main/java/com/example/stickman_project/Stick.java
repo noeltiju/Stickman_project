@@ -196,8 +196,5 @@ public class Stick {
         this.banana.setScoreTracking(scoreTracker);
     }
 
-    public Score_Tracking getScoreTracker() {
-        return scoreTracker;
-    }
 
 }
