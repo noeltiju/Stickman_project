@@ -16,6 +16,7 @@ import javafx.scene.image.ImageView;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -40,13 +41,14 @@ public class Stick {
     private Score_Tracking scoreTracker;
 
     private Banana banana;
+    private Barrel barrel;
     private boolean flag=false;
 
     private boolean stick_activate = false;
     private ArrayList<Barrel> barrels = new ArrayList<Barrel>();
     public Stick(Rectangle stick, NINJA character, Blocks blocks, Scene scene, AnchorPane main_pane) {
         this.banana = new Banana(blocks,character,main_pane);
-
+        this.barrel = new Barrel(blocks,character,main_pane);
 
         this.stick=stick;
         this.character = character;
@@ -82,13 +84,20 @@ public class Stick {
         rectangle.setStroke(Color.BLACK);
         main_pane.getChildren().add(rectangle);
         this.scoreTracker.score_incrementer();
-        Barrel barrel = new Barrel(this.blocks,this.character,this.main_pane);
-        this.barrels.add(barrel);
         this.stick = rectangle;
         this.stick_activate = true;
 
-        this.banana.setPosition(this.blocks.getPrimary_block().getLayoutX() + this.blocks.getPrimary_block().getWidth() , this.blocks.getSecondary_block().getLayoutX());
+        boolean state = new Random().nextBoolean();
 
+        if (state){
+            this.banana.setPosition(this.blocks.getPrimary_block().getLayoutX() + this.blocks.getPrimary_block().getWidth() , this.blocks.getSecondary_block().getLayoutX());
+
+        }
+
+        boolean state1 = new Random().nextBoolean();
+        if (state1){
+            this.barrel.setPosition();
+        }
 
     }
     public void increase_height(Rectangle stick) {
@@ -114,25 +123,10 @@ public class Stick {
         stick.getTransforms().add(rotation);
         this.Downwardtimeline = new Timeline(
                 new KeyFrame(Duration.seconds(0.005), e -> {
-                    if (rotation.getAngle() < 90 && rotation.getAngle()>=0) {
+                    if (rotation.getAngle() < 90 && rotation.getAngle()>=0 && !flag) {
                         rotation.setAngle(rotation.getAngle() + 1);
-                    }
-                    else{
-                        this.Downwardtimeline.stop();
-                        this.stick_activate = false;
-                        growing.stop();
-                        double endX = stick.getLayoutX()  + this.stick.getHeight();
-                        try {
-                            this.stop_down_timeline(endX);
-                        } catch (InterruptedException ex) {
-                            throw new RuntimeException(ex);
-                        }
-                        if(Math.abs(character.get_position() - endX) <= 1){
-                            this.character.running_animation_stopper_2();
-
-                        }
-                        flag=true;
-                        return;
+                    }else{
+                        this.stop_down_timeline();
                     }
                 })
         );
@@ -140,37 +134,18 @@ public class Stick {
         Downwardtimeline.play();
 
     }
-    public void stop_down_timeline(double endX) throws InterruptedException {
-        ArrayList<Thread> barrelThreads = new ArrayList<>();
-
-        if (!this.barrels.isEmpty()) {
-            ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
-
-            for (Barrel barrel : this.barrels) {
-                Thread t = new Thread(barrel);
-                barrelThreads.add(t);
-                t.start();
-
-                // Schedule a task with a delay of 2 seconds
-                executorService.schedule(() -> {
-                    // Code to be executed after 2 seconds
-                }, 1, TimeUnit.SECONDS);
-            }
-
-            // Shutdown the executor after all tasks are scheduled
-            executorService.shutdown();
-        }
-
-        for (Thread barrelThread : barrelThreads) {
-            try {
-                barrelThread.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+    public void stop_down_timeline(){
+        this.Downwardtimeline.stop();
+        this.growing.stop();
+        double endX = stick.getLayoutX()  + this.stick.getHeight();
+        flag=true;
+        this.stick_activate = false;
 
         this.character.running_animation(endX);
 
+        if (!this.stick_activate){
+            this.barrel.barrel_roll();
+        }
     }
     public Rectangle getStick() {
         return stick;
@@ -196,5 +171,7 @@ public class Stick {
         this.banana.setScoreTracking(scoreTracker);
     }
 
-
+    public Barrel getBarrel() {
+        return barrel;
+    }
 }

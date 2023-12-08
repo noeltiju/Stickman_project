@@ -72,6 +72,8 @@ public class Banana {
         this.moving_banana.stop();
     }
 
+
+
     public void activate(){
         this.banana_view.setVisible(true);
         this.moving_banana.setCycleCount(Timeline.INDEFINITE);

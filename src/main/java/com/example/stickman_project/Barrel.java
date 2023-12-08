@@ -14,20 +14,29 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.util.Objects;
 
-public class Barrel implements Runnable{
+public class Barrel{
     ImageView barrel_view = new ImageView();
     private Rotate rotation;
     private Blocks blocks;
+    private boolean status;
 
     private NINJA ninja;
     private AnchorPane main_pane;
 
     private final Timeline barrel_rolling = new Timeline(new KeyFrame(Duration.seconds(0.004), event ->{
+
+        if (!status){
+            stop_rolling();
+        }
+
+        if(this.barrel_view.getLayoutX() < 270){
+            this.deactivate();
+        }
         if (!this.checkcollision()){
             rotation.setAngle(rotation.getAngle() - 1);
             barrel_view.setLayoutX(barrel_view.getLayoutX() - 1);
         }else{
-            this.main_pane.getChildren().remove(barrel_view);
+            this.barrel_view.setVisible(false);status=false;
             stop_rolling();
             try {
                 this.ninja.exit_routine();
@@ -65,22 +74,28 @@ public class Barrel implements Runnable{
         this.barrel_view.setFitHeight(50);
         this.barrel_view.setFitWidth(50);
         this.barrel_view.setImage(new Image("Donkey Kong Barrel.png"));
-        barrel_view.setLayoutX(blocks.getSecondary_block().getLayoutX() + (blocks.getSecondary_block().getWidth() / 2) - 25);
-        barrel_view.setLayoutY(500);
-        mainPane.getChildren().add(barrel_view);
+        this.barrel_view.setVisible(false);status = false;
+        main_pane = mainPane;
+
+        this.main_pane.getChildren().add(barrel_view);
         this.rotation = new Rotate(0,25,25);
         this.barrel_view.getTransforms().add(this.rotation);
 
-    }
 
-    @Override
-    public void run(){
-        this.barrel_rolling.setCycleCount(Timeline.INDEFINITE);
-        this.barrel_rolling.play();
     }
 
     public void barrel_roll(){
         this.barrel_rolling.setCycleCount(Timeline.INDEFINITE);
         this.barrel_rolling.play();
+    }
+
+    public void setPosition() {
+        this.barrel_view.setVisible(true);status = true;
+        barrel_view.setLayoutX(blocks.getSecondary_block().getLayoutX() + (blocks.getSecondary_block().getWidth() / 2) - 25);
+        barrel_view.setLayoutY(500);
+
+    }
+    public void deactivate(){
+        this.barrel_view.setVisible(false);status = false;
     }
 }
