@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6e7f1d4-1245-41b3-b385-b785207879f4" name="Changes" comment="Second Commit">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Background_changer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/bg3.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/NINJA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/NINJA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Score_Tracking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Score_Tracking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/game_state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/game_state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/MainController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,8 +77,8 @@
       <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
+      <recent name="$PROJECT_DIR$/src/main/" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -123,7 +123,10 @@
       <workItem from="1702038156763" duration="16000" />
       <workItem from="1702044389160" duration="642000" />
       <workItem from="1702045041860" duration="6270000" />
-      <workItem from="1702051344713" duration="380000" />
+      <workItem from="1702051344713" duration="501000" />
+      <workItem from="1702052638450" duration="547000" />
+      <workItem from="1702057179843" duration="1016000" />
+      <workItem from="1702058208964" duration="1155000" />
     </task>
     <task id="LOCAL-00001" summary="Second Commit">
       <option name="closed" value="true" />
