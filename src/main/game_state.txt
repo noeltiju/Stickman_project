@@ -1,2 +1,2 @@
-Bananas: 13
-HighScore: 3
+Bananas: 31
+HighScore: 7
