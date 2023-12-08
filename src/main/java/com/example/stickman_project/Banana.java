@@ -19,15 +19,16 @@ public class Banana {
     private NINJA ninja;
     private int moving = 0;
     private Score_Tracking scoreTracking;
+    private boolean status = false;
 
     private Random rand = new Random();
-    private final Timeline moving_banana = new Timeline(new KeyFrame(Duration.seconds(0.01), event ->{
+    private final Timeline moving_banana = new Timeline(new KeyFrame(Duration.seconds(0.1), event ->{
         if (!this.checkcollision() && this.banana_view.getLayoutX() < this.blocks.getSecondary_block().getLayoutX()){
             if (moving == 0){
-                this.banana_view.setLayoutY(this.banana_view.getLayoutY() - 1);
+                this.banana_view.setLayoutY(this.banana_view.getLayoutY() - 2);
                 moving = 1;
             }else{
-                this.banana_view.setLayoutY(this.banana_view.getLayoutY() + 1);
+                this.banana_view.setLayoutY(this.banana_view.getLayoutY() + 2);
                 moving = 0;
             }
         }else{
@@ -37,8 +38,13 @@ public class Banana {
     }));
 
     private boolean checkcollision() {
+        if (!status){
+          return false;
+        };
         if (this.banana_view.getLayoutX() >= this.ninja.get_character().getLayoutX() && this.banana_view.getLayoutX()+50 <= this.ninja.get_character().getLayoutX() + this.ninja.get_character().getFitWidth()){
             if (Objects.equals(this.ninja.getCharacter_status(), "DOWN")){
+                scoreTracking.banana_incrementer();
+                System.out.println("Hit");
                 return true;
             }
         }
@@ -54,28 +60,28 @@ public class Banana {
         this.banana_view.setFitWidth(50);
         this.banana_view.setImage(new Image("banana.png"));
         mainPane.getChildren().add(this.banana_view);
-        this.banana_view.setVisible(false);
+        this.banana_view.setVisible(false);status = false;
 
 
     }
 
     public void setPosition(double x, double y){
-        int pos = rand.nextInt((int) x, (int) y - 20);
+        int pos = rand.nextInt((int) x, (int) y - 40);
         this.banana_view.setLayoutX(pos);
         this.banana_view.setLayoutY(561);
         activate();
     }
 
     public void deactivate(){
-        scoreTracking.banana_incrementer();
-        this.banana_view.setVisible(false);
+
+        this.banana_view.setVisible(false);status=false;
         this.moving_banana.stop();
     }
 
 
 
     public void activate(){
-        this.banana_view.setVisible(true);
+        this.banana_view.setVisible(true);status = true;
         this.moving_banana.setCycleCount(Timeline.INDEFINITE);
         this.moving_banana.play();
 

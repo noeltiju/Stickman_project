@@ -17,6 +17,8 @@ public class Blocks {
     @FXML
     private Rectangle secondary_block;
     @FXML
+    private Rectangle bonus;
+    @FXML
     private AnchorPane main_pane;
     private NINJA ninja;
     private Random rand = new Random();
@@ -55,6 +57,8 @@ public class Blocks {
     private void stop_timeline() {
         this.rising_timeline.stop();
         this.stick.initial_condition();
+        this.bonus.setVisible(true);
+        this.bonus.setLayoutX((this.secondary_block.getLayoutX() + (this.secondary_block.getWidth() / 2) - 6));
     }
 
     public Blocks(Rectangle first, Rectangle second, NINJA character){
@@ -74,7 +78,7 @@ public class Blocks {
 
     }
     public void switch_block_motion(){
-
+        this.bonus.setVisible(false);
         this.moving_timeline.setCycleCount(Animation.INDEFINITE);
         this.moving_timeline.play();
         this.stick.remove_previous_stick();
@@ -97,5 +101,11 @@ public class Blocks {
         this.moving_timeline.stop();
     }
 
+    public void setBonus(Rectangle bonus) {
+        this.bonus = bonus;
+    }
 
+    public Rectangle getBonus() {
+        return bonus;
+    }
 }

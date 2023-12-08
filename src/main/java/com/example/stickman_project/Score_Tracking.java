@@ -78,4 +78,9 @@ public class Score_Tracking {
     public int getHigh_score() {
         return high_score;
     }
+
+    public void bananas_used_revive(){
+        bananas -= 10;
+        set_bananas_score(bananas);
+    }
 }

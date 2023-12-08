@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="main_screen" prefHeight="875.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stickman_project.MainController">
    <children>
@@ -34,11 +35,17 @@
          <children>
             <Button layoutX="220.0" layoutY="130.0" mnemonicParsing="false" onAction="#revive" prefHeight="44.0" prefWidth="90.0" style="-fx-background-color: green; -fx-background-radius: 20;" text="Yes" />
             <Button layoutX="97.0" layoutY="130.0" mnemonicParsing="false" onAction="#die" prefHeight="44.0" prefWidth="90.0" style="-fx-background-color: red; -fx-background-radius: 20;" text="N o" />
-            <Label alignment="CENTER" layoutX="101.0" layoutY="39.0" prefHeight="59.0" prefWidth="214.0" text="Do you want to Revive?">
+            <Label alignment="CENTER" layoutX="98.0" layoutY="10.0" prefHeight="59.0" prefWidth="214.0" text="Do you want to Revive?">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
+            <ImageView fitHeight="47.0" fitWidth="53.0" layoutX="197.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../banana.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="177.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x10" />
          </children>
       </Pane>
       <ImageView fitHeight="47.0" fitWidth="53.0" layoutX="1306.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
@@ -47,5 +54,6 @@
          </image>
       </ImageView>
       <Label fx:id="bananas_label" layoutX="1284.0" layoutY="119.0" text="0" />
+      <Rectangle fx:id="bonus" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="17.0" layoutX="456.0" layoutY="551.0" stroke="BLACK" strokeType="INSIDE" width="13.0" />
    </children>
 </AnchorPane>

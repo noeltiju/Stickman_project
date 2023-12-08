@@ -14,6 +14,7 @@ package com.example.stickman_project;
         import javafx.util.Duration;
 
         import java.io.IOException;
+        import java.util.Objects;
 
 public class NINJA {
     private Scene scene;
@@ -53,13 +54,11 @@ public class NINJA {
         }
 
         if (this.character.getLayoutX() + this.character.getFitWidth() >= this.blocks.getSecondary_block().getLayoutX()){
-            if (this.character_status == "DOWN"){
+            if (Objects.equals(this.character_status, "DOWN")){
                 dead = true;
                 try {
                     exit_routine();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                } catch (InterruptedException e) {
+                } catch (IOException | InterruptedException e) {
                     throw new RuntimeException(e);
                 }
             }
@@ -73,6 +72,7 @@ public class NINJA {
             this.scene.addEventFilter(KeyEvent.KEY_RELEASED,this::donkey_normal);
             this.scene.addEventFilter(KeyEvent.KEY_PRESSED, this::donkey_jump);
             this.scene.addEventFilter(KeyEvent.KEY_RELEASED,this::disableJump);
+
             switch (running_number) {
 
                 case 1:
@@ -189,6 +189,10 @@ public class NINJA {
     }
     public void running_animation(double endx){
         this.endx = endx;
+        if (this.endx < this.blocks.getBonus().getLayoutX() + 13 && this.endx > this.blocks.getBonus().getLayoutX()){
+            this.score_tracker.score_incrementer();
+        }
+
 
         this.running_timeline.setCycleCount(Animation.INDEFINITE);
         this.running_timeline.play();
@@ -240,6 +244,7 @@ public class NINJA {
         this.blocks.stop();
         this.running_animation_stopper_2();
         this.revive.setVisible(true);
+        this.blocks.getBonus().setVisible(false);
 
     }
 
@@ -253,6 +258,7 @@ public class NINJA {
     public void choose_revive(){
         this.dead = false;
         this.character_status = "MOVE";
+        this.score_tracker.bananas_used_revive();
         this.revive.setVisible(false);
         this.character.setLayoutX(this.blocks.getSecondary_block().getLayoutX());
         this.initial_image();

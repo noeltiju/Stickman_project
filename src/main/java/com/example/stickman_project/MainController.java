@@ -41,8 +41,8 @@ public class MainController {
     private Label score_label;
     @FXML
     private Pane pane;
-
-
+    @FXML
+    private Rectangle bonus;
     @FXML
     private Label bananas_label;
     Image standing = new Image("donkey_kong.png");
@@ -74,6 +74,7 @@ public class MainController {
         this.ninja.setRevive(pane);
         this.blocks.setStick(this.stick);
         this.stick.setTracker(this.scoreTracker);
+        this.blocks.setBonus(bonus);
     }
     public void setScene(Scene scene) {
         this.scene = scene;
