@@ -52,7 +52,6 @@ public class  HelloApplication extends Application {
             clip.open(audioStream);
             FloatControl volume_changer = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
             volume_changer.setValue(-15.0f);
-//            clip.loop(Clip.LOOP_CONTINUOUSLY);
             clip.start();
             clip.drain();
 

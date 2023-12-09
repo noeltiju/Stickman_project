@@ -37,6 +37,8 @@ public class Score_Tracking {
         this.score_label = score_label;
     }
 
+    //Singleton
+
     public static Score_Tracking getInstance(){
         if (scoreTracker == null){
             scoreTracker = new Score_Tracking();

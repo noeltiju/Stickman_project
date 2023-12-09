@@ -46,11 +46,6 @@
          </children>
       </Pane>
       <Button layoutX="690.0" layoutY="583.0" mnemonicParsing="false" onAction="#new_game" prefHeight="75.0" prefWidth="86.0" style="-fx-background-radius: 10;" />
-      <Button layoutX="644.0" layoutY="423.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="159.0" style="-fx-background-radius: 10; -fx-background-color: #f13e5e;" text="SHARE" textFill="WHITE">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Button>
       <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="709.0" layoutY="599.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../Home_Icon-removebg-preview.png" />

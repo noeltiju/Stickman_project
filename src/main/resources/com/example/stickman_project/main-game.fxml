@@ -40,7 +40,7 @@
                   <Image url="@../../../banana.png" />
                </image>
             </ImageView>
-            <Text fill="#fcfcfc" layoutX="177.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x10" />
+            <Text fill="#575757" layoutX="177.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x10" />
          </children>
       </Pane>
       <ImageView fitHeight="47.0" fitWidth="53.0" layoutX="1306.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
