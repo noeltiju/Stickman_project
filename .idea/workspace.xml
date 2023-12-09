@@ -8,13 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/game_state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/game_state.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Background_changer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Background_changer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Cherry (1)..png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/bg2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/bg3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/bg4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/bg6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/bg7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/stickman_project/main-game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/stickman_project/main-game.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +130,7 @@
       <workItem from="1702058208964" duration="1155000" />
       <workItem from="1702061711646" duration="136000" />
       <workItem from="1702061915331" duration="9016000" />
-      <workItem from="1702128122125" duration="7254000" />
+      <workItem from="1702128122125" duration="9800000" />
     </task>
     <task id="LOCAL-00001" summary="Second Commit">
       <option name="closed" value="true" />

@@ -21,6 +21,7 @@ public class Background_changer implements Runnable{
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT)));
+
     }
     int file_no = 1;
     private Timeline changing_timeline = new Timeline(new KeyFrame(Duration.seconds(5), event ->{
