@@ -1,8 +1,10 @@
 package com.example.stickman_project;
 
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.util.Duration;
 
 public class Background_changer implements Runnable{
     @FXML
@@ -12,12 +14,16 @@ public class Background_changer implements Runnable{
     public Background_changer(AnchorPane pane){
         this.main_pane = pane;
         this.main_pane.setBackground(new Background(new BackgroundImage(
-                (new Image("bg.png")),
+                (new Image("bg6.jpg")),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT)));
     }
+
+
+
+
     @Override
     public void run(){
         while(true){

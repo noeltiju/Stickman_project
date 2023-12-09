@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6e7f1d4-1245-41b3-b385-b785207879f4" name="Changes" comment="Second Commit">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/game_state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/game_state.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Background_changer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Background_changer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/EndingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/EndingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/HelloApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +161,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/stickman_project/Background_changer.java</url>
-          <line>27</line>
+          <line>44</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
