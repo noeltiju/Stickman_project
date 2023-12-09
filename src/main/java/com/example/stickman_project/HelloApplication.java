@@ -46,13 +46,13 @@ public class  HelloApplication extends Application {
     }
     private void intro() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         try{
-            File file = new File("src/main/intro2.wav");
+            File file = new File("src/main/intro.wav");
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
             Clip clip = AudioSystem.getClip();
             clip.open(audioStream);
             FloatControl volume_changer = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
             volume_changer.setValue(-15.0f);
-            clip.loop(Clip.LOOP_CONTINUOUSLY);
+//            clip.loop(Clip.LOOP_CONTINUOUSLY);
             clip.start();
             clip.drain();
 

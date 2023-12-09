@@ -26,45 +26,5 @@
          </font>
       </Button>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#430909" height="293.0" layoutX="608.0" layoutY="589.0" stroke="BLACK" strokeType="INSIDE" width="202.0" />
-      <Button layoutX="196.0" layoutY="467.0" mnemonicParsing="false" prefHeight="111.0" prefWidth="105.0" style="-fx-background-radius: 50;" textAlignment="CENTER" textFill="#430909" textOverrun="WORD_ELLIPSIS">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
-      <Button layoutX="198.0" layoutY="635.0" mnemonicParsing="false" prefHeight="111.0" prefWidth="105.0" style="-fx-background-radius: 50;" textAlignment="CENTER" textFill="#430909" textOverrun="WORD_ELLIPSIS">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
-      <Button layoutX="1077.0" layoutY="469.0" mnemonicParsing="false" prefHeight="111.0" prefWidth="105.0" style="-fx-background-radius: 50;" textAlignment="CENTER" textFill="#430909" textOverrun="WORD_ELLIPSIS">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
-      <Button layoutX="1085.0" layoutY="639.0" mnemonicParsing="false" prefHeight="111.0" prefWidth="105.0" style="-fx-background-radius: 50;" textAlignment="CENTER" textFill="#430909" textOverrun="WORD_ELLIPSIS">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
-      <ImageView fitHeight="71.0" fitWidth="73.0" layoutX="217.0" layoutY="656.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../removed_volume.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="71.0" fitWidth="73.0" layoutX="213.0" layoutY="496.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../Question%20Mark.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="71.0" fitWidth="73.0" layoutX="1096.0" layoutY="490.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../Advertise%20Preview.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="71.0" fitWidth="73.0" layoutX="1101.0" layoutY="657.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../Cherry%20(1)..png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

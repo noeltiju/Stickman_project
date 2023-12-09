@@ -15,12 +15,18 @@ package com.example.stickman_project;
 
         import javafx.scene.media.Media;
         import javafx.scene.media.MediaPlayer;
+        import org.junit.Test;
+        import org.junit.runner.JUnitCore;
+        import org.junit.runner.Result;
 
         import java.io.File;
         import java.io.IOException;
         import java.util.Objects;
         import java.net.URL;
         import javax.sound.sampled.*;
+
+        import static org.junit.Assert.assertFalse;
+        import static org.junit.Assert.assertTrue;
 
 
 public class NINJA {
@@ -286,8 +292,15 @@ public class NINJA {
 
         if (this.score_tracker.getBananas_score() >= 10){
             this.dead = false;
+
             this.character_status = "MOVE";
-            this.score_tracker.bananas_used_revive();
+            Result result = JUnitCore.runClasses(Bananas_tester.class);
+            if (!result.getFailures().isEmpty()){
+                System.out.println("Error: Decrementer didnt work!");
+                score_tracker.set_bananas_score(0);
+            }else{
+                score_tracker.set_bananas_score(score_tracker.getBananas_score());
+            }
             this.revive.setVisible(false);
             this.character.setLayoutX(this.blocks.getSecondary_block().getLayoutX());
             this.initial_image();

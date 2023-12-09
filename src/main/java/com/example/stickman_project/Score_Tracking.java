@@ -5,9 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
+import org.junit.runner.notification.Failure;
 
 import java.io.*;
 import java.util.Scanner;
+
+import static java.lang.System.exit;
 
 public class Score_Tracking {
 
@@ -41,6 +46,16 @@ public class Score_Tracking {
     }
 
     public void File_reader() throws FileNotFoundException {
+
+        Result result = JUnitCore.runClasses(Filetester.class);
+        if (!result.getFailures().isEmpty()){
+            System.out.println("Error: File empty!");
+            bananas = 0;
+            score = 0;
+            high_score = 0;
+            return;
+        }
+
         in = new Scanner(new BufferedReader(new FileReader("src/main/game_state.txt"))); //Use of decorator pattern
         in.next();
         this.bananas = Integer.parseInt(in.next());
@@ -100,6 +115,6 @@ public class Score_Tracking {
 
     public void bananas_used_revive(){
         bananas -= 10;
-        set_bananas_score(bananas);
+
     }
 }

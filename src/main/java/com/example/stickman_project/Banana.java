@@ -109,12 +109,7 @@ public class Banana {
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
             Clip clip = AudioSystem.getClip();
             clip.open(audioStream);
-//            clip.addLineListener(event -> {
-//                if (event.getType() == LineEvent.Type.STOP) {
-//                    // Release resources after the sound finishes
-//                    clip.close();
-//                }
-//            });
+
             clip.start();
             clip.drain();
 
