@@ -199,4 +199,19 @@ public class Stick {
         }
 
     }
+
+    //Rotates to death
+    public void stick_dies(){
+        System.out.println(rotation.getAngle());
+
+        this.Downwardtimeline = new Timeline(
+                new KeyFrame(Duration.seconds(0.005), e -> {
+                    if (rotation.getAngle() <= 180 && rotation.getAngle()>=90) {
+                        rotation.setAngle(rotation.getAngle() + 1);
+                    }
+                })
+        );
+        Downwardtimeline.setCycleCount(Timeline.INDEFINITE);
+        Downwardtimeline.play();
+    }
 }

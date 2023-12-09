@@ -1,2 +1,2 @@
 Bananas: 8
-HighScore: 13
+HighScore: 10

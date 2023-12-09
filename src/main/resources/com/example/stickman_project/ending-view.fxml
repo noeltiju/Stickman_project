@@ -28,38 +28,32 @@
                   <Font name="Bodoni 72 Smallcaps Book" size="19.0" />
                </font>
             </Text>
-            <Text layoutX="66.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BEST">
+            <Text layoutX="62.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BEST">
                <font>
                   <Font name="Bodoni 72 Smallcaps Book" size="19.0" />
                </font>
             </Text>
-            <Label fx:id="score" layoutX="74.0" layoutY="26.0" prefHeight="37.0" prefWidth="30.0">
+            <Label fx:id="score" layoutX="62.0" layoutY="26.0" prefHeight="37.0" prefWidth="42.0">
                <font>
                   <Font size="30.0" />
                </font>
             </Label>
-            <Label fx:id="high_score" layoutX="72.0" layoutY="85.0" prefHeight="37.0" prefWidth="30.0">
+            <Label fx:id="high_score" layoutX="60.0" layoutY="85.0" prefHeight="37.0" prefWidth="49.0">
                <font>
                   <Font size="30.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Button layoutX="659.0" layoutY="584.0" mnemonicParsing="false" onAction="#new_game" prefHeight="51.0" prefWidth="55.0" style="-fx-background-radius: 10;" />
-      <Button layoutX="740.0" layoutY="584.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="55.0" style="-fx-background-radius: 10;" />
+      <Button layoutX="690.0" layoutY="583.0" mnemonicParsing="false" onAction="#new_game" prefHeight="75.0" prefWidth="86.0" style="-fx-background-radius: 10;" />
       <Button layoutX="644.0" layoutY="423.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="159.0" style="-fx-background-radius: 10; -fx-background-color: #f13e5e;" text="SHARE" textFill="WHITE">
          <font>
             <Font size="22.0" />
          </font>
       </Button>
-      <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="664.0" layoutY="587.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="709.0" layoutY="599.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../Home_Icon-removebg-preview.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="745.0" layoutY="589.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../Retry%20500%20removebg%20preview.png" />
          </image>
       </ImageView>
    </children>

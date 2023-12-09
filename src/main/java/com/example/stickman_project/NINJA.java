@@ -52,6 +52,11 @@ public class NINJA {
 
     private boolean dead = false;
 
+    public boolean get_death_status(){
+        return this.dead;
+    }
+
+
     int running_number = 1;int kicking_number = 1;
 
     private Score_Tracking score_tracker;
@@ -274,6 +279,7 @@ public class NINJA {
         }
         dying_timeline.setCycleCount(Timeline.INDEFINITE);
         dying_timeline.play();
+        this.stick.stick_dies();
     }
 
     public void choose_revive(){
@@ -314,12 +320,7 @@ public class NINJA {
 
 
     private void donkey_flip(KeyEvent event) {
-        if (event.getCode() == KeyCode.DOWN && !this.dead) {
-//            try {
-//                play_flip();
-//            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-//                throw new RuntimeException(e);
-//            }
+        if (event.getCode() == KeyCode.DOWN) {
             this.character_status = "DOWN";
             this.character.setTranslateY(90);
             this.character.setScaleY(-1);
@@ -436,6 +437,7 @@ public class NINJA {
         }
 
     }
+
 
 
 

@@ -35,17 +35,15 @@ public class EndingController {
     }
 
     public void setScore(int score, int highScore) {
-
+        System.out.println(highScore);
         this.score.setText(String.valueOf(score));
-        System.out.println(score);
+        this.high_score.setText(String.valueOf(highScore));
+
         try {
             applause();
         } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
             throw new RuntimeException(e);
         }
-        
-        System.out.println(highScore);
-        this.high_score.setText(String.valueOf(highScore));
     }
 
 

@@ -27,7 +27,7 @@ public class Barrel{
 
     private final Timeline barrel_rolling = new Timeline(new KeyFrame(Duration.seconds(0.004), event ->{
 
-        if (!status){
+        if (!status || this.ninja.get_death_status()){
             stop_rolling();
         }
 
@@ -54,7 +54,6 @@ public class Barrel{
     private boolean checkcollision() {
         if (this.barrel_view.getLayoutX() >= this.ninja.get_character().getLayoutX() && this.barrel_view.getLayoutX()+50 <= this.ninja.get_character().getLayoutX() + this.ninja.get_character().getFitWidth()){
           if (Objects.equals(this.ninja.getCharacter_status(), "MOVE")){
-
               try {
                   barrel_touch();
               } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {

@@ -43,10 +43,6 @@ public class  HelloApplication extends Application {
 
         stage.show();
 
-
-
-
-
     }
     private void intro() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         try{
