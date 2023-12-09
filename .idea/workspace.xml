@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6e7f1d4-1245-41b3-b385-b785207879f4" name="Changes" comment="Second Commit">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/game_state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/game_state.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Score_Tracking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Score_Tracking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Stick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Stick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Background_changer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/Background_changer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/EndingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/EndingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stickman_project/HelloApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +130,6 @@
       <workItem from="1702058208964" duration="1155000" />
       <workItem from="1702061711646" duration="136000" />
       <workItem from="1702061915331" duration="9016000" />
-      <workItem from="1702110612678" duration="4053000" />
     </task>
     <task id="LOCAL-00001" summary="Second Commit">
       <option name="closed" value="true" />
@@ -159,6 +159,17 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Second Commit" />
     <option name="LAST_COMMIT_MESSAGE" value="Second Commit" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/stickman_project/Background_changer.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

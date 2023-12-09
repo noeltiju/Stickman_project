@@ -24,14 +24,14 @@ public class Background_changer implements Runnable{
             if (this.score_tracker.getScore() >= 2 && this.score_tracker.getScore() < 4){
 
                 this.main_pane.setBackground(new Background(new BackgroundImage(
-                        (new Image("bg4.png")),
+                        (new Image("src/main/resources/bg4.png")),
                         BackgroundRepeat.NO_REPEAT,
                         BackgroundRepeat.NO_REPEAT,
                         BackgroundPosition.DEFAULT,
                         BackgroundSize.DEFAULT)));
             }else if (this.score_tracker.getScore() >= 4 && this.score_tracker.getScore() < 8){
                 this.main_pane.setBackground(new Background(new BackgroundImage(
-                        (new Image("bg6.jpg")),
+                        (new Image("src/main/resources/bg6.jpg")),
                         BackgroundRepeat.NO_REPEAT,
                         BackgroundRepeat.NO_REPEAT,
                         BackgroundPosition.DEFAULT,

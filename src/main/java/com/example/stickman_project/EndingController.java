@@ -38,7 +38,6 @@ public class EndingController {
         System.out.println(highScore);
         this.score.setText(String.valueOf(score));
         this.high_score.setText(String.valueOf(highScore));
-
         try {
             applause();
         } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
@@ -64,7 +63,7 @@ public class EndingController {
 
     private void applause() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         try{
-            File file = new File("src/main/applause.wav");
+            File file = new File("src/main/applause2.wav");
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
             Clip clip = AudioSystem.getClip();
             clip.open(audioStream);
