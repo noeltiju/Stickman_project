@@ -36,7 +36,7 @@ public class Stick {
     private NINJA character;
     @FXML
     private Blocks blocks;
-    private final Timeline growing = new Timeline(new KeyFrame(Duration.seconds(0.01), event -> increase_height(this.stick)));;
+    private final Timeline growing = new Timeline(new KeyFrame(Duration.seconds(0.01), event -> increase_height(this.stick)));
     private Timeline Downwardtimeline;
     private Rotate rotation;
     @FXML
@@ -127,13 +127,14 @@ public class Stick {
         stick.getTransforms().add(rotation);
         this.Downwardtimeline = new Timeline(
                 new KeyFrame(Duration.seconds(0.005), e -> {
-                    if (rotation.getAngle() < 90 && rotation.getAngle()>=0 && !flag) {
+                    if (rotation.getAngle() < 90 && rotation.getAngle()>=0) {
                         rotation.setAngle(rotation.getAngle() + 1);
                     }else{
                         this.stop_down_timeline();
                     }
                 })
         );
+        flag = true;
         Downwardtimeline.setCycleCount(Timeline.INDEFINITE);
         Downwardtimeline.play();
         try {
@@ -147,7 +148,6 @@ public class Stick {
         this.Downwardtimeline.stop();
         this.growing.stop();
         double endX = stick.getLayoutX()  + this.stick.getHeight();
-        flag=true;
         this.stick_activate = false;
 
         this.character.running_animation(endX);
@@ -206,7 +206,7 @@ public class Stick {
 
         this.Downwardtimeline = new Timeline(
                 new KeyFrame(Duration.seconds(0.005), e -> {
-                    if (rotation.getAngle() <= 180 && rotation.getAngle()>=90) {
+                    if (rotation.getAngle() < 180 && rotation.getAngle()>=90) {
                         rotation.setAngle(rotation.getAngle() + 1);
                     }
                 })

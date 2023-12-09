@@ -57,8 +57,7 @@ public class MainController {
     private NINJA ninja; private Blocks blocks;private Stick stick; private Score_Tracking scoreTracker;
     Background_changer bg_changer;
     @FXML
-    public void initialize() throws InterruptedException {
-//        main_screen.setBackground(new Background(bg));
+    public void initialize(){
         stick_rectangle.setMouseTransparent(false);
         pane.setVisible(false);
 
@@ -67,7 +66,10 @@ public class MainController {
 
     public void main_initialize() throws FileNotFoundException {
 
-        this.scoreTracker = new Score_Tracking(score_label,bananas_label);
+        this.scoreTracker = Score_Tracking.getInstance();
+        this.scoreTracker.setScore_label(score_label);
+        this.scoreTracker.setBananas_label(bananas_label);
+
         this.scoreTracker.File_reader();
         bg_changer.setScore_tracker(this.scoreTracker);
         Thread bg_changer_thread = new Thread(bg_changer);

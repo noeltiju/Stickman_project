@@ -230,7 +230,7 @@ public class NINJA {
 
     }
     public void kicking_animation(){
-        this.kicking_timeline.setCycleCount(5);
+        this.kicking_timeline.setCycleCount(3);
         this.kicking_timeline.play();
 
     }

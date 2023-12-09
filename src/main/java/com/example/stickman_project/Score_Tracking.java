@@ -10,6 +10,8 @@ import java.io.*;
 import java.util.Scanner;
 
 public class Score_Tracking {
+
+    private static Score_Tracking scoreTracker;
     private int score = 0;
     private int bananas = 0;
     private int high_score = 0;
@@ -20,13 +22,26 @@ public class Score_Tracking {
     private Label bananas_label;
     Scanner in;
 
-    public Score_Tracking(Label label1, Label label2) throws FileNotFoundException {
-        this.score_label = label1;
-        this.bananas_label = label2;
+    private Score_Tracking(){}
+
+    public void setBananas_label(Label bananas_label) {
+        this.bananas_label = bananas_label;
+    }
+
+    public void setScore_label(Label score_label) {
+        this.score_label = score_label;
+    }
+
+    public static Score_Tracking getInstance(){
+        if (scoreTracker == null){
+            scoreTracker = new Score_Tracking();
+        }
+
+        return scoreTracker;
     }
 
     public void File_reader() throws FileNotFoundException {
-        in = new Scanner(new BufferedReader(new FileReader("src/main/game_state.txt")));
+        in = new Scanner(new BufferedReader(new FileReader("src/main/game_state.txt"))); //Use of decorator pattern
         in.next();
         this.bananas = Integer.parseInt(in.next());
         in.next();
