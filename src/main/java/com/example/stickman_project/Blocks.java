@@ -108,4 +108,8 @@ public class Blocks {
     public Rectangle getBonus() {
         return bonus;
     }
+
+
+
+
 }

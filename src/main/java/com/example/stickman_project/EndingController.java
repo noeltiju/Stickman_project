@@ -9,6 +9,8 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 
+import javax.sound.sampled.*;
+import java.io.File;
 import java.io.IOException;
 
 
@@ -36,6 +38,11 @@ public class EndingController {
 
         this.score.setText(String.valueOf(score));
         System.out.println(score);
+        try {
+            applause();
+        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
+            throw new RuntimeException(e);
+        }
         
         System.out.println(highScore);
         this.high_score.setText(String.valueOf(highScore));
@@ -50,7 +57,28 @@ public class EndingController {
         stage.setScene(scene);
         controller.setStage(stage);
 
+
         stage.show();
+
+    }
+
+
+
+    private void applause() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        try{
+            File file = new File("src/main/applause.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+
+            clip.start();
+            clip.drain();
+
+
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
 
     }
 }

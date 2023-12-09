@@ -7,6 +7,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
+import javax.sound.sampled.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Random;
@@ -22,29 +24,36 @@ public class Banana {
     private boolean status = false;
 
     private Random rand = new Random();
-    private final Timeline moving_banana = new Timeline(new KeyFrame(Duration.seconds(0.1), event ->{
-        if (!this.checkcollision() && this.banana_view.getLayoutX() < this.blocks.getSecondary_block().getLayoutX()){
-            if (moving == 0){
+    private final Timeline moving_banana = new Timeline(new KeyFrame(Duration.seconds(0.1), event -> {
+        if (!this.checkcollision() && this.banana_view.getLayoutX() < this.blocks.getSecondary_block().getLayoutX()) {
+            if (moving == 0) {
                 this.banana_view.setLayoutY(this.banana_view.getLayoutY() - 2);
                 moving = 1;
-            }else{
+            } else {
                 this.banana_view.setLayoutY(this.banana_view.getLayoutY() + 2);
                 moving = 0;
             }
-        }else{
-              deactivate();
+        } else {
+            deactivate();
         }
 
     }));
 
     private boolean checkcollision() {
-        if (!status){
-          return false;
-        };
-        if (this.banana_view.getLayoutX() >= this.ninja.get_character().getLayoutX() && this.banana_view.getLayoutX()+50 <= this.ninja.get_character().getLayoutX() + this.ninja.get_character().getFitWidth()){
-            if (Objects.equals(this.ninja.getCharacter_status(), "DOWN")){
+        if (!status) {
+            return false;
+        }
+        ;
+        if (this.banana_view.getLayoutX() >= this.ninja.get_character().getLayoutX() && this.banana_view.getLayoutX() + 50 <= this.ninja.get_character().getLayoutX() + this.ninja.get_character().getFitWidth()) {
+            if (Objects.equals(this.ninja.getCharacter_status(), "DOWN")) {
+
                 scoreTracking.banana_incrementer();
                 System.out.println("Hit");
+                try {
+                    play_flip();
+                } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
+                    throw new RuntimeException(e);
+                }
                 return true;
             }
         }
@@ -60,28 +69,30 @@ public class Banana {
         this.banana_view.setFitWidth(50);
         this.banana_view.setImage(new Image("banana.png"));
         mainPane.getChildren().add(this.banana_view);
-        this.banana_view.setVisible(false);status = false;
+        this.banana_view.setVisible(false);
+        status = false;
 
 
     }
 
-    public void setPosition(double x, double y){
+    public void setPosition(double x, double y) {
         int pos = rand.nextInt((int) x, (int) y - 40);
         this.banana_view.setLayoutX(pos);
         this.banana_view.setLayoutY(561);
         activate();
     }
 
-    public void deactivate(){
+    public void deactivate() {
 
-        this.banana_view.setVisible(false);status=false;
+        this.banana_view.setVisible(false);
+        status = false;
         this.moving_banana.stop();
     }
 
 
-
-    public void activate(){
-        this.banana_view.setVisible(true);status = true;
+    public void activate() {
+        this.banana_view.setVisible(true);
+        status = true;
         this.moving_banana.setCycleCount(Timeline.INDEFINITE);
         this.moving_banana.play();
 
@@ -89,5 +100,27 @@ public class Banana {
 
     public void setScoreTracking(Score_Tracking scoreTracking) {
         this.scoreTracking = scoreTracking;
+    }
+
+
+    private void play_flip() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        try {
+            File file = new File("src/main/banana.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+//            clip.addLineListener(event -> {
+//                if (event.getType() == LineEvent.Type.STOP) {
+//                    // Release resources after the sound finishes
+//                    clip.close();
+//                }
+//            });
+            clip.start();
+            clip.drain();
+
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }

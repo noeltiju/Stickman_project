@@ -16,9 +16,12 @@ package com.example.stickman_project;
         import javafx.scene.media.Media;
         import javafx.scene.media.MediaPlayer;
 
+        import java.io.File;
         import java.io.IOException;
         import java.util.Objects;
         import java.net.URL;
+        import javax.sound.sampled.*;
+
 
 public class NINJA {
     private Scene scene;
@@ -158,6 +161,7 @@ public class NINJA {
 
     }));
     private Timeline dying_timeline = new Timeline(new KeyFrame(Duration.seconds(0.005), event ->{
+
         if (this.character.getLayoutY() >= 800){
             try {
                 change_to_end_screen();
@@ -165,8 +169,10 @@ public class NINJA {
                 throw new RuntimeException(e);
             }
         }else{
+
             this.character.setRotate(this.character.getRotate() + 2);
             this.character.setLayoutY(this.character.getLayoutY() + 2);
+
         }
 
     }));
@@ -195,7 +201,13 @@ public class NINJA {
         this.endx = endx;
         if (this.endx < this.blocks.getBonus().getLayoutX() + 13 && this.endx > this.blocks.getBonus().getLayoutX()){
             this.score_tracker.score_incrementer();
+            try {
+                touch_red();
+            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+                throw new RuntimeException(e);
+            }
         }
+
 
 
         this.running_timeline.setCycleCount(Animation.INDEFINITE);
@@ -255,6 +267,11 @@ public class NINJA {
     public void no_revive(){
         this.dead = true;
         this.revive.setVisible(false);
+        try {
+            fall_down();
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            throw new RuntimeException(e);
+        }
         dying_timeline.setCycleCount(Timeline.INDEFINITE);
         dying_timeline.play();
     }
@@ -298,6 +315,11 @@ public class NINJA {
 
     private void donkey_flip(KeyEvent event) {
         if (event.getCode() == KeyCode.DOWN && !this.dead) {
+//            try {
+//                play_flip();
+//            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+//                throw new RuntimeException(e);
+//            }
             this.character_status = "DOWN";
             this.character.setTranslateY(90);
             this.character.setScaleY(-1);
@@ -319,6 +341,11 @@ public class NINJA {
         if (event.getCode() == KeyCode.UP && !isJumping && !this.dead && no_jump ) {
             isJumping = true;
             this.character_status = "JUMP";
+            try {
+                play_jump();
+            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+                throw new RuntimeException(e);
+            }
             RotateTransition rotateTransition = new RotateTransition(Duration.seconds(0.6), this.character);
             rotateTransition.setFromAngle(0);
             rotateTransition.setToAngle(360);
@@ -360,4 +387,56 @@ public class NINJA {
     public void setScore_tracker(Score_Tracking score_tracker) {
         this.score_tracker = score_tracker;
     }
+    private void play_jump() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        try{
+            File file = new File("src/main/jump.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+
+    }
+    private void fall_down() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        try{
+            File file = new File("src/main/gameover6.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+
+            clip.start();
+//            clip.drain();
+
+
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+
+    }
+
+    private void touch_red() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        try{
+            File file = new File("src/main/touch_red.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+
+            clip.start();
+            clip.drain();
+
+
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+
+    }
+
+
+
 }

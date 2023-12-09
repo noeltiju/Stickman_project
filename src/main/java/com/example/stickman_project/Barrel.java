@@ -11,6 +11,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
+import javax.sound.sampled.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -52,7 +54,13 @@ public class Barrel{
     private boolean checkcollision() {
         if (this.barrel_view.getLayoutX() >= this.ninja.get_character().getLayoutX() && this.barrel_view.getLayoutX()+50 <= this.ninja.get_character().getLayoutX() + this.ninja.get_character().getFitWidth()){
           if (Objects.equals(this.ninja.getCharacter_status(), "MOVE")){
-            return true;
+
+              try {
+                  barrel_touch();
+              } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+                  throw new RuntimeException(e);
+              }
+              return true;
             }
         }
 
@@ -97,5 +105,23 @@ public class Barrel{
     }
     public void deactivate(){
         this.barrel_view.setVisible(false);status = false;
+    }
+
+    private void barrel_touch() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        try{
+            File file = new File("src/main/barrel_touch.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+
+            clip.start();
+            clip.drain();
+
+
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+
     }
 }

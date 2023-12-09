@@ -21,17 +21,18 @@ public class Background_changer implements Runnable{
     @Override
     public void run(){
         while(true){
-            System.out.println("True");
+//            System.out.println("True");
             if (this.score_tracker.getScore() >= 2 && this.score_tracker.getScore() < 4){
+
                 this.main_pane.setBackground(new Background(new BackgroundImage(
-                        (new Image("bg2.jpg")),
+                        (new Image("bg4.png")),
                         BackgroundRepeat.NO_REPEAT,
                         BackgroundRepeat.NO_REPEAT,
                         BackgroundPosition.DEFAULT,
                         BackgroundSize.DEFAULT)));
             }else if (this.score_tracker.getScore() >= 4 && this.score_tracker.getScore() < 8){
                 this.main_pane.setBackground(new Background(new BackgroundImage(
-                        (new Image("bg3.png")),
+                        (new Image("bg6.jpg")),
                         BackgroundRepeat.NO_REPEAT,
                         BackgroundRepeat.NO_REPEAT,
                         BackgroundPosition.DEFAULT,

@@ -13,7 +13,10 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 import javafx.scene.image.ImageView;
+import javax.sound.sampled.*;
 
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
@@ -108,6 +111,7 @@ public class Stick {
         growing.play();
         stick.setTranslateY(stick.getTranslateY() - 5);
         stick.setHeight(stick.getHeight() + 5);
+
     }
 
 
@@ -132,6 +136,11 @@ public class Stick {
         );
         Downwardtimeline.setCycleCount(Timeline.INDEFINITE);
         Downwardtimeline.play();
+        try {
+            play_stick();
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            throw new RuntimeException(e);
+        }
 
     }
     public void stop_down_timeline(){
@@ -173,5 +182,21 @@ public class Stick {
 
     public Barrel getBarrel() {
         return barrel;
+    }
+
+
+    private void play_stick() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        try{
+            File file = new File("src/main/fall_block.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+
     }
 }

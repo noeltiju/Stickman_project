@@ -1,4 +1,5 @@
 package com.example.stickman_project;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
 import java.util.EventObject;
@@ -22,6 +23,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+import javax.sound.sampled.*;
 import java.util.Objects;
 
 public class HelloController {
@@ -80,4 +82,7 @@ public class HelloController {
     public void setStage(Stage stage) {
         this.stage = stage;
     }
+
+
+
 }

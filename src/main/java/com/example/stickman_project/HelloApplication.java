@@ -15,6 +15,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.controlsfx.control.tableview2.filter.filtereditor.SouthFilter;
 
+import javax.sound.sampled.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -22,6 +24,11 @@ public class  HelloApplication extends Application {
     @Override
     public void start(Stage  stage) throws IOException, InterruptedException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+        try {
+            intro();
+        } catch (UnsupportedAudioFileException | LineUnavailableException e) {
+            throw new RuntimeException(e);
+        }
         Parent root = loader.load();
         HelloController controller = loader.getController();
 
@@ -35,6 +42,29 @@ public class  HelloApplication extends Application {
         controller.setStage(stage);
 
         stage.show();
+
+
+
+
+
+    }
+    private void intro() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        try{
+            File file = new File("src/main/intro.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+
+            clip.start();
+            clip.drain();
+
+
+
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+
     }
     public static void main(String[] args) {
         launch(args);
